@@ -1,0 +1,14 @@
+
+
+Block: RawDecode
+
+RawDecode_master  g.evtyp==5
+
+
+Block: Decode
+
+#Decode_master  true
+
+
+Block: Physics
+

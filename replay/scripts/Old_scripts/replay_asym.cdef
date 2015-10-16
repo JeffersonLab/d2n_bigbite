@@ -1,0 +1,25 @@
+
+
+Block: RawDecode
+
+RawDecode_master  g.evtyp==1||g.evtyp==2||g.evtyp==3||g.evtyp==5||g.evtyp==6
+
+
+Block: Decode
+
+#Decode_master  true
+
+
+Block: Physics
+GoodLHRS abs(ReactPt_L.z)<.2&&!DL.edtpl&&L.tr.n==1&&L.prl1.asum_c>0.&&L.prl2.asum_c>0&&abs(ExTgtCor_L.dp)<0.05
+
+GoodBB BB.tr.n==1&&!DL.edtpl&&abs(BB.tr.vz)<0.2&&abs(BB.ts.sh.x-BB.tr.x-1.2*BB.tr.th-1.04417e-3)<.1&&abs(BB.ts.sh.y-BB.tr.y-1.2*BB.tr.ph-3.70444e-3)<.1&&BB.ts.ps.e>0&&BB.ts.sh.e>0
+
+BB_TM	 abs(BB.ts.sh.x-BB.tr.x-1.2*BB.tr.th-1.04417e-3)<.15&&abs(BB.ts.sh.y-BB.tr.y-1.2*BB.tr.ph-3.70444e-3)<.15
+BB_TR1	BB.tr.n>=1
+BB_VZ	abs(BB.tr.vz)<0.2
+BB_E	BB.ts.ps.e_c>400.&&(BB.ts.ps.e_c/2+BB.ts.sh.e_c)/BB.tr.p>500
+
+GoodBB_E BB_TR1&&!DL.edtpl&&BB_VZ&&BB_TM&&BB.ts.ps.e>0&&BB.ts.sh.e>0&&BB_E
+
+Physics_master GoodLHRS||GoodBB_E

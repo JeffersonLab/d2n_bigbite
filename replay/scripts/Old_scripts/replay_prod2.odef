@@ -1,0 +1,331 @@
+# ----------------------------------------------------------------
+# Transversity Physics Replay Output Configuration File
+# Second Production Version
+#
+# Original Author : Jin Huang <jinhuang@jlab.org>
+# ----------------------------------------------------------------
+# Modification History:
+#
+#	May 23 2009 Kalyan : Modified scaler banks, added 1024Hz clock variables
+#
+# ----------------------------------------------------------------
+#
+# List of the variable blocks to be written out
+
+block BB.optics.charge
+block BB.optics.eloss
+block BB.optics.n
+block BB.tr.p
+block BB.tr.vz
+block BB.tr.tg_*
+block BB.tr.x
+block BB.tr.y
+block BB.tr.th
+block BB.tr.ph
+block BB.tr.*  # leave for calibration stage
+
+block BB.s.*hit*
+block BB.s.*tr*
+
+block BB.sum.*hit*
+block BB.sum.*tr*
+
+block BB.ts.*.nclust
+block BB.ts.*.e*
+block BB.ts.*.x
+block BB.ts.*.y
+block BB.ts.*.*blk
+block BB.ts.*.mult
+
+block L.tr.*  # <- For Chiranjib: please remove unused variables
+block ReactPt_L.* 
+block ExTgtCor_L.*
+
+block L.s2.*  # <- For Chiranjib: please remove unused variables
+block L.cer.*sum*
+block L.a1.*sum*
+
+block L.prl1.*sum*
+block L.prl1.e
+
+block L.prl2.*sum*
+block L.prl2.e
+
+block PriKine.*
+block SecKinePion.*
+
+block adchel.L.helicity
+block adchel2.L.helicity
+block g0hel.L.helicity
+
+block he3.Spin
+block he3.IsSpinValid
+block he3.pol
+block he3.theta
+block he3.phi
+
+block SecKineHe3.th_xq
+block SecKineHe3.ph_xq
+
+block urb.*
+
+block N.* 
+
+block DL.*  # <- For Kalyan: please remove unused variables
+
+# -> For Joe: please add T2 variables
+
+#----------------------------
+# BigBite total shower 
+#----------------------------
+ FORMULA BBTotalE BB.ts.ps.e/2 + BB.ts.sh.e
+ FORMULA BBTotalEc BB.ts.ps.e_c/2 + BB.ts.sh.e_c
+
+
+
+# ------------------------------------------------
+# Scalars
+# ------------------------------------------------
+# "evleft" = ROC11 data
+# Do not use "default" for transversity
+
+begin scalers evleft
+# counts in triggers, BCM, etc
+  t1c 1 0 counts
+  t2c 1 1 counts
+  t3c 1 2 counts
+  t4c 1 3 counts
+  t5c 1 4 counts
+  t6c 1 5 counts  
+  t7c 1 6 counts 
+  clkc 1 7 counts
+  l1ac 1 12 counts
+  u1c 1 13 counts
+  u3c 1 16 counts
+  u10c 1 8 counts
+  d1c 1 15 counts
+  d3c 1 10 counts
+  d10c 1 11 counts
+  fclkc 1 28 counts
+# rates
+  t1r  1 0  
+  t2r  1 1  
+  t3r  1 2  
+  t4r  1 3  
+  t5r  1 4  
+  t6r  1 5  
+  t7r  1 6  
+  clkr  1 7
+  u1r  1 13  
+  u3r  1 16  
+  u10r 1 8  
+  d1r  1 15  
+  d3r  1 10  
+  d10r 1 11  
+  l1ar 1 12 
+  fclkr 1 28
+# target and helicity combinations (slots 2,3,...)
+  clkpp 2 7 counts
+  clkpm 4 7 counts
+  clkmp 3 7 counts
+  clkmm 5 7 counts
+  
+  l1app 2 12 counts
+  l1apm 4 12 counts
+  l1amp 3 12 counts
+  l1amm 5 12 counts
+  
+  fclkpp 2 28 counts
+  fclkpm 4 28 counts
+  fclkmp 3 28 counts
+  fclkmm 5 28 counts
+  
+  u1pp 2 13 counts
+  u1pm 4 13 counts
+  u1mp 3 13 counts
+  u1mm 5 13 counts
+
+  u3pp 2 16 counts
+  u3pm 4 16 counts
+  u3mp 3 16 counts
+  u3mm 5 16 counts
+
+  u10pp 2 8 counts
+  u10pm 4 8 counts
+  u10mp 3 8 counts
+  u10mm 5 8 counts
+  
+  d1pp 2 15 counts
+  d1pm 4 15 counts
+  d1mp 3 15 counts
+  d1mm 5 15 counts
+  
+  d3pp 2 25 counts
+  d3pm 4 10 counts
+  d3mp 3 10 counts
+  d3mm 5 10 counts
+  
+  d10pp 2 11 counts
+  d10pm 4 11 counts
+  d10mp 3 11 counts
+  d10mm 5 11 counts
+  
+  
+  t1pp 2 0 counts
+  t1pm 4 0 counts
+  t1mp 3 0 counts
+  t1mm 5 0 counts
+  
+  t3pp 2 2 counts
+  t3pm 4 2 counts
+  t3mp 3 2 counts
+  t3mm 5 2 counts
+  
+  t5pp 2 4 counts
+  t5pm 4 4 counts
+  t5mp 3 4 counts
+  t5mm 5 4 counts
+  
+  t6pp 2 5 counts
+  t6pm 4 5 counts
+  t6mp 3 5 counts
+  t6mm 5 5 counts
+# etc ... have fun
+end scalers
+
+
+# "evbbite" = ROC12 data
+begin scalers evbbite
+  t1c 4 0 counts
+  t2c 4 1 counts
+  t3c 4 2 counts
+  t4c 4 3 counts
+  t5c 4 4 counts
+  t6c 4 5 counts
+  t7c 4 6 counts
+  clkc 4 7 counts
+  l1ac 4 8 counts
+  fclkc 4 11 counts
+  f1rftime1c 4 12 counts
+  f1rftime2c 4 13 counts
+  u1c 4 16 counts
+  u3c 4 17 counts
+  u10c 4 18 counts
+  d1c 4 19 counts
+  d3c 4 20 counts
+  d10c 4 21 counts
+# These are rates
+  t1r 4 0  
+  t2r 4 1  
+  t3r 4 2  
+  t4r 4 3  
+  t5r 4 4  
+  t6r 4 5  
+  t7r 4 6  
+  clkr 4 7
+  l1ar 4 8 
+  fclkr 4 11
+  f1rftime1 4 12 
+  f1rftime2 4 13 
+  u1r 4 16 
+  u3r 4 17 
+  u10r 4 18  
+  d1r 4 19 
+  d3r 4 20  
+  d10r 4 21 
+# target and helicity combinations 
+  clkpp 5 7 counts
+  clkpm 7 7 counts
+  clkmp 6 7 counts
+  clkmm 8 7 counts
+
+  l1app 5 8 counts
+  l1apm 7 8 counts
+  l1amp 6 8 counts
+  l1amm 8 8 counts
+  
+  fclkpp 5 11 counts
+  fclkpm 7 11 counts
+  fclkmp 6 11 counts
+  fclkmm 8 11 counts
+  
+  u1pp 5 16 counts
+  u1pm 7 16 counts
+  u1mp 6 16 counts
+  u1mm 8 16 counts
+
+  u3pp 5 17 counts
+  u3pm 7 17 counts
+  u3mp 6 17 counts
+  u3mm 8 17 counts
+
+  u10pp 5 18 counts
+  u10pm 7 18 counts
+  u10mp 6 18 counts
+  u10mm 8 18 counts
+  
+  d1pp 5 19 counts
+  d1pm 7 19 counts
+  d1mp 6 19 counts
+  d1mm 8 19 counts
+
+  d3pp 5 20 counts
+  d3pm 7 20 counts
+  d3mp 6 20 counts
+  d3mm 8 20 counts
+
+  d10pp 5 21 counts
+  d10pm 7 21 counts
+  d10mp 6 21 counts
+  d10mm 8 21 counts
+  
+  t1pp 5 0 counts
+  t1pm 7 0 counts
+  t1mp 6 0 counts
+  t1mm 8 0 counts
+  
+  t3pp 5 2 counts
+  t3pm 7 2 counts
+  t3mp 6 2 counts
+  t3mm 8 2 counts
+  
+  t5pp 5 4 counts
+  t5pm 7 4 counts
+  t5mp 6 4 counts
+  t5mm 8 4 counts
+  
+  t6pp 5 5 counts
+  t6pm 7 5 counts
+  t6mp 6 5 counts
+  t6mm 8 5 counts
+ 
+end scalers
+
+begin epics
+   HALLA:p
+   HALLA:dpp
+   IPM1H04A.XPOS
+   IPM1H04A.YPOS
+   IPM1H04B.XPOS
+   IPM1H04B.YPOS
+   hac_bcm_average
+   
+	HacAi_hpchan0
+	HacAi_hpchan1
+	HacAi_hpchan2
+	HacAi_hpchan3
+	HacAi_hpchan4
+	HacAi_hpchan5
+	HacAi_hpchan6
+	HacAi_hpchan7
+	HaGenTargPos
+	HacOMEGA_READ
+	haPolHe3_Spin_State
+	haPolHe3_Flip_Sequence_ID
+	haPolHe3_Flip_Count
+	haPolHe3_FLIP_NMR_Pol
+	DDM45_1disp1_read
+	DDM45_2disp1_read
+	DDM45_3disp1_read
+end epics
+

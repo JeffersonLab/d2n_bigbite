@@ -1,0 +1,34 @@
+Tue Mar 23 21:21:23 EDT 2010  [ Brad Sawatzky -- brads@jlab.org ]
+- applied Diana's patch to  BBNormAna/BBNormAna.cxx
+  (BBNormAna/BBNormAna-23Mar2010.diff) that adds the updated bcm calibration
+  constants.
+- analogous patch added to analyzer/src/THaNormAna.C
+
+
+
+Tue Feb  2 22:09:07 EST 2010 [ Brad Sawatzky -- brads@jlab.org ]
+- setting up for a 'standard' release for d2n.jlab.org
+  - updated root-setup.sh with reasonable default values
+  - updated replay/def.h with reasonable default values
+  - cleaned up StartType.pl
+    - the main 'filetimes_d2n' was moved to $DB_DIR/
+    - as per convention, StartType.pl will first check for a file in the
+      working directory and use that instead
+  - updated makefiles to use these gcc compile options:
+    '-march=core2 -mfpmath=sse'
+  - stripped 'LED' subdirectory in rootfile path in replay_det_BB.C
+
+- See 'Running multiple jobs' section in README
+  - a couple helper scripts and suggestions are provided to speed analysis
+    and better utilize our machine
+
+- stripped useless LHRS VDC histo generation from BBDecData.cxx
+  - updated replay_det_BB.C to use BBDecData class instead of THaDecData
+  - updated replay_phys_BB.C to use BBDecData class instead of THaDecData
+
+FIXME: THaDecData VDC efficiency histo handling seems broken (and was not touched)
+    - The histogram writing code used for the 'special case' VDC efficiency
+      histos seems to be fairly broken.  The TH1::Write() method seems to be
+      called multiple times resulting in many duplicate copies of the histos
+      being written to the root file.
+

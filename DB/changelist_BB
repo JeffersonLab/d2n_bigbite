@@ -1,0 +1,515 @@
+*************************************************************************
+posik(Sept 17, 2009)
+*************************************************************************
+ - created new time-stamped directory '20090206' to reflect
+      - Begining of exp.
+
+ - created new time-stamped directory '20090210' to reflect 
+      - BB polarity change to positive, happened 1262 20090210 17:09:42 -> 1263 20090210 20:15:54
+
+ - created new time-stamped directory '20090211' to reflect
+      - BB polarity change to negative, happened 1294 20090211 06:46:30 -> 1295 20092011 09:33:52
+
+ - created new time-stamped directory '20090212' to reflect
+      - 10% change in Scintillate HV, happened 1338 20090212 16:13:04 
+
+ - created new time-stamped directory '20090213' to reflect
+      - moved BB cer ADCs to chan 32-63 of 1881 ROC 8 slot 9, happened 1396 20090213 20:08:26, this
+        change is made in db_BB.cer.1dat until mid-day shift is included.
+
+ - created new time-stamped directory '20090216' to reflect
+      - HV changes in BB
+
+ - created new time-stamped directory '20090217' to reflect
+      - BB cer 1-8/11-18 being split between 1881/FADC, happened 1514 20090217 10:19:07
+
+ - created new time-stamped directory '20090309' to reflect
+      - BB polarity change to positive, happened 2086 20090309 09:24:45 -> 2101 20090310 00:30:05
+
+ - created new time-stamped directory '20090311' to reflect
+      - BB polarity change to negative, happened 2102 20090311 17:36:55 
+
+ - created new time-stamped directory '20090315' to reflect
+      - BB polarity change to positive, happened 2199 20090315 21:03:10 -> 2214 20090316 08:00:45
+      - use positive cosmic run 2214 for cosmics calibration starting with run 2199(proper cosmics not taken till run 2214)
+
+ - created new time-stamped directory '20090316' to reflect
+      - BB polarity change to negative, happened 2215 20090316 09:51:27
+
+****************************************************************************
+posik (Sept 21, 2009)
+****************************************************************************
+ - Updated '20090316' to include:
+          -BB cer peds (by eye)
+          -BB cer gain calibrations of 1 photopeak to ADC chan. 30 (by eye)
+
+- created new time-stamped directory '20090226' to reflect 
+      - new BB_cer peds/1-photo peaks, happened 1829 20090226 11:03:24          
+
+- Updated '20090213' to include:
+          -BB cer peds adjusted (by eye) in db_BB.cer.1dat, not sure about gain 1pe peaks, no led run.
+
+ - Updated '20090217' to include:
+          -BB cer peds (by eye), not sure about gain 1pe peaks, no led run.
+
+*****************************************************************************
+posik (Sept 22, 2009)
+*****************************************************************************
+ -Updated '20090210' to include:
+        -BB.cer.dat file to use the right ADC and TDC locations
+        -BB cer ped values from 1232, PMT 20 seemed not to be working at the time, so no ped value for it.
+        -BB cer gain calibration of 1 photopeak, not sure since can't find LED run for this time period.
+
+
+ -Updated '20090206' to include:
+        -BB.cer.dat file to use correct ADC and TDC locations.
+        -BB cer ped values were added from run 1064, the ADCs look a little odd.
+
+ -Updated '20090309' to include:
+        -BB.cer.dat file same as '20090226'.
+
+ -Updated '20090311' to include:
+        -BB.cer.dat file same as '20090226'.
+
+ -Updated '20090315' to include:
+        -BB.cer.dat file same as '20090316'.
+        
+******************************************************************************
+posik (Sept 23, 2009)
+******************************************************************************
+
+- Changed ped values in '20090212' to match '20090211'
+
+*******************************************************************************
+
+******************************************************************************
+posik (Sept 23, 2009)
+******************************************************************************
+
+- created '20090214' to reflect new ADC crate location
+
+- created '20090310' to reflect one pos polarity BB run 2101
+
+*******************************************************************************
+
+******************************************************************************
+posik (Sept 29, 2009)
+******************************************************************************
+
+- Updated BB cer peds in '20090205-20090210' to reflect ped values in runs 1064
+
+- Updated BB cer peds in '20090210-20090213' to reflect ped values in runs 1232,1231
+
+- Updated BB cer peds in '20090213-20090226' to reflect ped values in runs 1401
+
+- Updated BB cer peds in  '20090226-20090314' to reflect ped values in runs 1829,1834
+
+- Updated BB cer peds in  '20090315-20090316' to reflect ped values in runs 2218,2230
+*******************************************************************************
+
+*******************************************************************************************
+posik (Oct 21, 2009)
+*******************************************************************************************
+
+- Updated BB.optic.dat and BB.mwdc.dat in all dir to those that Xin used during his 
+  d2n study (/w/work5602/transversity/farmprod/DB/20090210)
+
+*******************************************************************************************
+posik (Nov 18, 2009)
+*******************************************************************************************
+
+- Updated ps/sh peds in DB ( mostly the same a few changed by ~5 chans or so)
+
+*******************************************************************************************
+posik (Jan 21, 2010)
+*******************************************************************************************
+
+- Updated Peds for cer HV change 5,4. Affected DIR 20090226-20090316 (for HV map see d2n wiki https://hallaweb.jlab.org/wiki/index.php/HV_Tables)
+  - In DIR 20090309 "db_BB.cer.dat" is for HV#4 and "db_BB.cer.dat.1" is for HV#5
+  - In DIR 20090226 "db_BB.cer.dat" is for HV#3 and "db_BB.cer.dat.1" is for HV#4
+  - In DIR 20090213 "db_BB.cer.dat" is for HV#1 and "db_BB.cer.dat.2" is for HV#2
+  - In DIR 20090226 "db_BB.cer.dat.1" is now has right adc coef. for HV#4
+  - In DIR 20090309 "db_BB.cer.dat" is now has right adc coef. for HV#4
+  - In DIR 20090309 "db_BB.cer.dat.1" is now has right adc coef. for HV#5
+
+**************************************************************************************************
+posik (Feb. 04 2010)
+**************************************************************************************************
+- Mixed up PMT 1/2 for PMT 9/10 when reading the HV change from HV#4 to HV#5 SO need to fix constants for PMTs 1,2,9,10
+  -In DIR 20090309 "db_BB.cer.dat.1" is now correct for HV#5 gain match; Changed pmt 9 and 10 gain factor
+  -In DIR 20090310 through End "db_BB.cer.dat" is now correct for HV#5 gain match; Changed pmt 9 and 10 gain factor
+
+**************************************************************************************************
+posik (Feb. 25 2010)
+**************************************************************************************************
+- In DIR 20090206 
+     -db_BB.cer.dat.b0 has ped values for beam off based on values taken from run 1030
+     -db_BB.cer.dat.b0.1 has ped values for beam off based on values from 1140
+     -db_BB.cer.dat.b1.1 has ped values for beam on based on values from 1111
+
+- Added DIR 20090207
+     -db_BB.cer.dat.b0 has ped values for beam off based on values from 1140
+     -db_BB.cer.dat.b1 has ped values for beam on based on values from 1111
+
+-In DIR 20090208
+     -db_BB.cer.dat.b0 has ped values for beam off based on values from 1140
+     -db_BB.cer.dat.b1 has ped values for beam on based on values from 1111
+
+-In DIR 20090210
+     -db_BB.cer.dat.b0 has ped values for beam off based on values from 1232
+     -db_BB.cer.dat.b1 has ped values for beam on based on values from 1228
+     -db_BB.cer.dat.3 is run period where PMTs 1-16 were in Flash ADC (not used yet)
+     -db_BB.cer.dat.b0.1 has ped values for beam off based on values from 1232
+     -db_BB.cer.dat.b1.1 has ped values for beam on based on values from 1254
+
+-In DIR 20090211
+     -db_BB.cer.dat.b0 has ped values for beam off based on values from 1232
+     -db_BB.cer.dat.b1 has pes values for beam on based on values from 1254
+
+-In DIR 20090212
+     -db_BB.cer.dat.b0 has ped values for beam off based on values from 1232
+     -db_BB.cer.dat.b1 has ped values for beam on based on values from 1254
+     -db_BB.cer.dat.b0.1 has ped values for beam off based on values from 1319 (after ROC5 code mod)
+     -db_BB.cer.dat.b1.1 has ped values for beam on based on values from 1358 (after ROC5 code mod)
+
+-In DIR 20090213
+     -db_BB.cer.dat.b0 has ped values for beam off based on values from 1319 (after ROC5 code mod)
+     -db_BB.cer.dat.b1 has ped values for beam on based on values from 1358 (after ROC5 code mod)
+     -db_BB.cer.dat.b0.1 has ped values for beam off based on values from 1399 (1881 HV2)
+     -db_BB.cer.dat.b1.1 has ped values for beam on based on values from 1402 (1881 HV2)
+
+-In DIR 20090214
+    -db_BB.cer.dat.b0 hss beam off ped values based on values from 1410
+    -db_BB.cer.dat.b1 hss beam on ped values based on values from 1402
+
+-In DIR 20090215
+    -db_BB.cer.dat.b0 hss beam off ped values based on values from 1410
+    -db_BB.cer.dat.b1 hss beam on ped values based on values from 1402
+    -db_BB.cer.dat.b0.1 has beam off ped values based on values from 1399(cosmics)
+    -db_BB.cer.dat.b0.2 has beam off ped values based on values from 1476(cosmics)
+
+-In DIR 20090216
+    -db_BB.cer.dat.b0 has beam off ped values based on values from 1476(cosmics)
+    -db_BB.cer.dat.b1 has beam on ped values based on values from 1402
+
+-In DIR 20090217
+    -db_BB.cer.dat.b0 has beam off ped values based on values from 1476(cosmics)
+    -db_BB.cer.dat.b0.1 has beam on ped values based on values from 1516 (PMTs split between 1881/FADC)
+    -db_BB.cer.dat.b1 has beam on ped values based on values from 1533
+
+-In DIR 20090220
+    -db_BB.cer.dat.b0 has beam off ped values from 1516
+    -db_BB.cer.dat.b0.1 has low beam values from 1634 (2uA)
+    -db_BB.cer.dat.b1 has beam on values from 1533
+    -db_BB.cer.dat.b1.1 has beam values from 1696 (4uA N2)
+    
+-In DIR 20090223
+    -db_BB.cer.dat.b0 has beam off ped values from 1516
+    -db_BB.cer.dat.b0.1 has low beam values from 1634 (2uA)
+    -db_BB.cer.dat.b1 has beam on values from 1533
+    -db_BB.cer.dat.b1.1 has low beam values from 1696 (4uA)
+
+-In DIR 20090225
+    -db_BB.cer.dat.b0 has beam off ped values from 1516
+    -db_BB.cer.dat.b1 has beam on ped values from 1533
+
+-In DIR 20090226 
+    -db_BB.cer.dat.b0 has beam off ped values from 1829/1834
+    -db_BB.cer.dat.b1 has beam on ped values from 1533
+    -db_BB.cer.dat.b1.1 has low beam ped values from 1696
+    -db_BB.cer.dat.b1.2 has beam on ped values from 1849
+
+-In DIR 20090227
+    -db_BB.cer.dat.b0 has beam off ped values from 1829/1834
+    -db_BB.cer.dat.b1 has beam on ped values from 1861
+    -db_BB.cer.dat.b1.1 has low beam on ped values from 1516
+    -db_BB.cer.dat.b1.2 has low beam on ped values from 1901
+    -bd_BB.cer.dat.b1.3 has low beam on ped values from 1899   
+
+-In DIR 20090301
+    -db_BB.cer.dat.b0 has beam off peds from 1829/1834
+    -db_BB.cer.dat.b1 has beam on peds from 1861
+    -db_BB.cer.dat.b0.1 has cosmic peds from 1516
+    -db_BB.cer.dat.b1.1 has low beam peds from 1899 (2uA)
+    -db_BB.cer.dat.b1.2 has low beam peds from 1901 (4uA)
+
+-In DIR 20090302
+    -db_BB.cer.dat.b0 has cosmic peds from 1516
+
+-In DIR 20090303 
+    -db_BB.cer.dat.b0 has beam off peds from 1946
+    -db_BB.cer.dat.b1 has beam on peds from 1949
+    -db_BB.cer.dat.b1.1 has low beam peds from 1948 (5uA)
+
+-In DIR 20090304
+    -db_BB.cer.dat.b0 has Low beam peds from 1946
+    -db_BB.cer.dat.b1 has beam on peds from 1949, but with PMT4 = 350
+    -db_BB.cer.dat.b1.1 has low beam peds from 1948 (5uA)
+
+-In DIR 20090306
+    -db_BB.cer.dat.b0 has low/cosmic peds from 1946
+    -db_BB.cer.dat.b1 has beam on peds from 1949
+    -db_BB.cer.dat.b1.1 has low beam peds from 2109 (5uA)
+    -db_cratemap.dat was missing line in "Crate 8 fastbus" for slot 9, I added this line.
+
+-In DIR 20090309
+    -db_BB.cer.dat.b0 has cosmic peds from 1946, and new HV#5 gain coefficents
+    -db_BB.cer.dat.b1 has beam on peds from 1949
+    -db_BB.cer.dat.b1.1 has low beam peds from 2109
+
+-In DIR 20090310
+    -db_BB.cer.dat.b0 has cosmic peds from 1946
+
+-In DIR 20090311
+    -db_BB.cer.dat.b0 has cosmic peds from 1946
+
+-In DIR 20090312
+    -db_BB.cer.dat.b0 has cosmic peds from 1946
+    -db_BB.cer.dat.b1 has beam on peds from 1949 (new HV5 cof.)
+    -db_BB.cer.dat.b1.1 has low beam peds from 2109 (5uA, HV5 cof.)
+
+-In DIR 20090313
+   -db_BB.cer.dat.b0 has cosmic peds from 1946
+   -db_BB.cer.dat.b1 has beam on peds from 1949
+   -db_BB.cer.dat.b1.1 has low beam peds from 2109 (5uA)
+
+-In DIR 200903015
+   -db_BB.cer.dat.b0 has cosmic peds from 1946
+   -db_BB.cer.dat.b1 has beam on peds from 1949
+   -db_BB.cer.dat.b1.1 has low beam peds from 2109 (5uA)
+
+-In DIR 20090316
+   -db_BB.cer.dat.b0 has cosmics from 1946
+   -db_BB.cer.dat.b1 has beam on peds from 1949
+
+*************************************************************************
+brads (Apr 01, 2010)
+*************************************************************************
+- updated these lines in StartType.pl (fixing typos)
+  446:          dolink("$dbpath/db_BB.cer.dat.b1.1", "db_BB.cer.dat");
+  457:          dolink("$dbpath/db_BB.cer.dat.b1.1", "db_BB.cer.dat");
+
+*************************************************************************
+posik (June 01 2010)
+*******************************************************************************
+-In DIR 20090211
+   -MWDC calibrations to t0,drift-time and wire offsets (before and after voltage change)
+     -db_BB.mwdc.dat.0 is the BB mwdc for 1pass and before we started our 4/5pass production runs (1274-1302)
+     -db BB.mwdc.dat.1 is for the mwdc after our 1pass runs (1303-end of experiment)
+
+**************************************************************************************
+posik (Jan 03 2011)
+**************************************************************************************
+- updated StartType.pl to reflect changes made to DB to tweak shifting BB cer peds
+-In DIR 20090306
+   -db_BB.cer.dat.b1 peds changed to reflect beam trip cuts 15 uA runs 
+   -db_BB.cer.dat.b1.2 peds changed to reflect beam trip cuts 14 uA runs
+
+-In DIR 20090309
+   -db_BB.cer.dat.b1 peds changed to reflect beam trip cuts 15 uA runs 
+   -db_BB.cer.dat.b1.2 peds changed to reflect beam trip cuts 14 uA run
+
+-In DIR 20090312
+   -db_BB.cer.dat.b1 peds changed to reflect beam trip cuts 15 uA runs 
+   -db_BB.cer.dat.b1.2 peds changed to reflect beam trip cuts 14 uA run (with pmt 9/10 HV5 change)
+
+-In DIR 20090313
+   -db_BB.cer.dat.b1 peds changed to reflect beam trip cuts 15 uA runs 
+   -db_BB.cer.dat.b1.2 peds changed to reflect beam trip cuts 14 uA run (with pmt 9/10 HV5 change)
+
+-In DIR 20090315
+   -db_BB.cer.dat.b1 peds changed to reflect beam trip cuts 15 uA runs 
+
+-In DIR 20090316
+   -db_BB.cer.dat.b1 peds changed to reflect beam trip cuts 15 uA runs 
+
+- Disabled the shower start type (for now) 
+
+- Copied the db_BB.ts.ps.dat and db_BB.ts.sh.dat to DB DIR
+
+- Copied db_BB.ts.dat to main DB DIR and changed max dx and dy of preshower and shower clusters to 0.25 and 0.4 from 0.2 and 0.2 (this now matches transversity)
+
+- Changed the x and z location in db_BB.ts.ps.dat from x = 0.00 and z=0.77 to x = -0.015 and z = 0.97 (cm)
+
+*************************************************************************
+posik (March 28 2011)
+*******************************************************************************
+-In DIR 20090206
+  -db_BB.MWDC.dat was changed to reflect calibrated t0,drift-time to drift distance and wire offsets
+-In DIR 20090208
+  -db_BB.MWDC.dat was changed to reflect calibrated t0,drift-time to drift distance and wire offsets
+-In DIR 20090210
+  -db_BB.MWDC.dat.0 was changed to reflect calibrated t0,drift-time to drift distance and wire offsets BEFORE H2 running and BEFORE MWDC threshold change
+  -db_BB.MWDC.dat.1 was changed to reflect calibrated t0,drift-time to drift distance and wire offsets AFTER H2 running and AFTER MWDC threshold change
+
+*************************************************************************
+posik (April 6 2011)
+*******************************************************************************
+- In DIR 20090213
+  -db_BB.mwdc.dat file was copied from db_BB.mwdc.dat.1 to serve as default file for the LHRS replays (does not affect BB).
+*************************************************************************
+posik (April 8 2011)
+*******************************************************************************
+-In DIR 20090215
+   -db_BB.cer.dat.b0.2 changed the gain constants to correct HV3 setting before FADC splitting
+
+-In DIR 20090216
+   -db_BB.cer.dat.b0 changed the gain constants to correct HV3 setting before FADC splitting
+   -db_BB.cer.dat.b1 changed the gain constants to correct HV3 setting before FADC splitting
+
+-In DIR 20090217
+   -db_BB.cer.dat.b0 changed the gain constants to correct HV3 setting during FADC splitting
+   -db_BB.cer.dat.b1 changed the gain constants to correct HV3 setting during FADC splitting
+   -db_BB.cer.dat.b1.1 changed the gain constants to correct HV3 setting during FADC splitting
+   -db_BB.cer.dat.2  changed the gain constants to correct HV3 setting during FADC splitting
+
+-In DIR 20090223
+   -db_BB.cer.dat.b0 changed the gain constants to correct HV3 setting during FADC splitting
+   -db_BB.cer.dat.b1 changed the gain constants to correct HV3 setting during FADC splitting
+   -db_BB.cer.dat.b1.1 changed the gain constants to correct HV3 setting during FADC splitting
+   -db_BB.cer.dat.b0.1 changed the gain constants to correct HV3 setting during FADC splitting
+
+-In DIR 20090225
+   -db_BB.cer.dat.b0 changed the gain constants to correct HV3 setting during FADC splitting
+   -db_BB.cer.dat.b1 changed the gain constants to correct HV3 setting during FADC splitting
+
+-In DIR 20090226
+   -db_BB.cer.dat.b1 changed the gain constants to correct HV3 setting during FADC splitting
+   -db_BB.cer.dat.b1.1 changed the gain constants to correct HV3 setting during FADC splitting
+
+*************************************************************************
+posik (April 8 2011)
+*******************************************************************************
+-Added ADC gain constants to HV3 settings of pmt (9,10,19,20) using charge = 1 cut. This affected:
+        -In DIR 20090216
+            -db_BB.cer.dat.b0
+            -db_BB.cer.dat.b1
+        -In DIR 20090217
+	   -db_BB.cer.dat.b0
+	   -db_BB.cer.dat.b1
+	   -db_BB.cer.dat.b1.1
+	   -db_BB.cer.dat.2 
+	-In DIR 20090223
+	   -db_BB.cer.dat.b0
+	   -db_BB.cer.dat.b1 
+	   -db_BB.cer.dat.b1.1
+	   -db_BB.cer.dat.b0.1
+	-In DIR 20090225
+	   -db_BB.cer.dat.b0
+	   -db_BB.cer.dat.b1 
+	-In DIR 20090226
+	   -db_BB.cer.dat.b1
+	   -db_BB.cer.dat.b1.1
+
+-In DIR 20090213
+    -db_BB.cer.dat.b0.1 changed gain constants to HV2 setting note pmt12 had bad base+pmt.
+                        pmts 9,10,19,20 calibrated using charge = 1 cut.
+    -db_BB.cer.dat.b1.1 changed gain constants to HV2 setting note pmt12 had bad base+pmt.
+                        pmts 9,10,19,20 calibrated using charge = 1 cut.
+                        Added 96 chan to ped 13.
+-In DIR 20090214
+    -db_BB.cer.dat.b0 changed gain constants to HV2 setting note pmt12 had bad base+pmt.
+                        pmts 9,10,19,20 calibrated using charge = 1 cut.
+    -db_BB.cer.dat.b1 changed gain constants to HV2 setting note pmt12 had bad base+pmt.
+                        pmts 9,10,19,20 calibrated using charge = 1 cut.
+                        Added 96 chan to ped 13.
+
+-In DIR 20090215
+    -db_BB.cer.dat.b0 changed gain constants to HV2 setting note pmt12 had bad base+pmt.
+                        pmts 9,10,19,20 calibrated using charge = 1 cut.
+    -db_BB.cer.dat.b1 changed gain constants to HV2 setting note pmt12 had bad base+pmt.
+                        pmts 9,10,19,20 calibrated using charge = 1 cut.
+                        Added 96 chan to ped 13.
+    -db_BB.cer.dat.b0.1 changed gain constants to HV2 setting note pmt12 had bad base+pmt.
+                        pmts 9,10,19,20 calibrated using charge = 1 cut.
+                         subtracted 37 chan from ped 13.
+
+*************************************************************************
+posik (April 15 2011)
+*******************************************************************************
+-Added HV1 gain constants to BigBite Cerenkov PMTs. This affects the following:
+
+   -In DIR 20090205
+      -db_BB.cer.dat
+
+   -In DIR 20090206
+      -db_BB.cer.dat
+      -db_BB.cer.dat.b0
+      -db_BB.cer.dat.b0.1
+      -db_BB.cer.dat.b1.1
+
+  -In DIR 20090208
+      -db_BB.cer.dat
+      -db_BB.cer.dat.b0
+      -db_BB.cer.dat.b1
+
+  -In DIR 20090210
+      -db_BB.cer.dat
+      -db_BB.cer.dat.1
+      -db_BB.cer.dat.2
+      -db_BB.cer.dat.3
+      -db_BB.cer.dat.b0
+      -db_BB.cer.dat.b0.1
+      -db_BB.cer.dat.b1
+      -db_BB.cer.dat.b1.1
+
+  -In DIR 20090211
+      -db_BB.cer.dat
+      -db_BB.cer.dat.1
+      -db_BB.cer.dat.b0
+      -db_BB.cer.dat.b1
+
+  -In DIR 20090212
+      -db_BB.cer.dat
+      -db_BB.cer.dat.b0
+      -db_BB.cer.dat.b0.1
+      -db_BB.cer.dat.b1
+      -db_BB.cer.dat.b1.1
+
+  -In DIR 20090213
+      -db_BB.cer.dat
+      -db_BB.cer.dat.b0
+      -db_BB.cer.dat.b1
+
+-In DIR 20090210
+    -Copied db_BB.mwdc.dat.0 to db_BB.mwdc.dat as default link for LHRS
+
+*******************************************************************************************
+  posik (May 06 2011)
+*******************************************************************************************
+  -Changed db_BB.ts.ps.dat block Y dim from 0.35 to 0.34
+
+********************************************************************************
+  posik (Nov 07 2011)
+********************************************************************************
+  -Added in BigBite Shower/PreShower claibrations for HV changes
+    -In All DIR 
+      -db_BB.ts.ps.dat.00 and db_BB.ts.sh.dat.00
+           -Added to all folders, default calibration if run not found
+           -These are calibrations done for the 4.7 GeV data (runs 2024-2212)
+           -HV change
+    -In DIR 20090205,20090206,20090210,20090211,20090212,20090213,20090214
+       -db_BB.ts.ps.dat.01 and db_BB.ts.sh.dat.01
+           -These are calibrations done for the 5.89 GeV data (runs 1311-1475)
+           -Before Shower mod. fix
+    -In DIR 20090215,20090216
+       -db_BB.ts.ps.dat.01 and db_BB.ts.sh.dat.01.5
+           -These are calibrations done for the 5.89 GeV data (runs 1448-1475)
+           -After Shower mod. fix
+    -In DIR 20090217, 20090223
+       -db_BB.ts.ps.dat.02 and db_BB.ts.sh.dat.02
+           -These are calibrations done for the 5.89 GeV data (runs 1476-1742)
+           -HV change
+    -In DIR 20090226,20090301,20090302,20090303,20090306,20090309
+       -db_BB.ts.ps.dat.03 and db_BB.ts.sh.dat.03
+           -These are calibrations done for the 5.89 GeV data (runs 21829-2020)
+           -HV change
+  -Added in BigBite MWDC calibrations for retiming of main Trigger and L1A
+     -In DIR 20090212, 20090213
+       -db_BB.mwdc.dat.2
+           -Before timing change
+     -In DIR 20090215,20090216,20090217
+       -db_BB.mwdc.dat.3
+           -After timing change and after shower mod fix
+       
+

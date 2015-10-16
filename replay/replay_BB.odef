@@ -1,0 +1,47 @@
+block BB.s.*
+block BB.ts.*
+block BB.sum.*
+block BB.psum.*
+block DL.*
+block g.*
+#block adchel.L.helicity
+#block adchel2.L.helicity
+#block g0hel.L.helicity
+
+
+#Shower blocks ADC
+TH1F BB_sh_a_ 'BB Shower ADCs' BB.ts.sh.a 200 0 1500 BB.ts.sh.a>0.
+TH1F BB_sh_a_p_ 'BB Shower ped_sub ADCs' BB.ts.sh.a_p 200 0 1500 BB.ts.sh.a>0.
+
+#Preshower blocks ADC
+TH1F BB_ps_a_ 'BB PS ADCs' BB.ts.ps.a 200 0 1500 BB.ts.ps.a>0.
+TH1F BB_ps_a_p_ 'BB PS ped_sub ADCs' BB.ts.ps.a_p 200 0 1500 BB.ts.ps.a_p>0.
+
+#Total Sum ADC
+TH1F BB_sum_a_ 'BB TSum ADCs' BB.sum.RA 200 0 2000 BB.sum.RA>0.
+TH1F BB_sum_a_p_ 'BB TSum ped_sub ADCs' BB.sum.RApedc 200 0 2000 BB.sum.RApedc>0.
+
+#Preshower Sum ADC
+TH1F BB_psum_a_ 'BB PSum ADCs' BB.psum.RA 200 0 2000 BB.psum.RA>0.
+TH1F BB_psum_a_p_ 'BB PSum ped_sub ADCs' BB.psum.RApedc 200 0 2000 BB.psum.RApedc>0.
+
+#Scint ADC
+TH1F BB_sl_a_ 'BB Scint Left ADCs' BB.s.LA 200 0 4000 BB.s.LA>0.
+TH1F BB_sl_a_p_ 'BB Scint Left ped_sub ADCs' BB.s.LApedc 200 0 4000 BB.s.LApedc>0.
+TH1F BB_sr_a_ 'BB Scint Right ADCs' BB.s.RA 200 0 4000 BB.s.RA>0.
+TH1F BB_sr_a_p_ 'BB Scint Right ped_sub ADCs' BB.s.RApedc 200 0 4000 BB.s.RApedc>0.
+
+#Cluster position Y-horizontal array(7), X-vertical array(27)
+TH1F BB_sh_x   'BB X position of Shower' BB.ts.sh.x 55 -1.15 1.15 
+TH1F BB_sh_y   'BB Y position of Shower' BB.ts.sh.y 55 -0.3 0.3
+TH1F BB_ps_x   'BB X position of PS' BB.ts.sh.x 55 -1.15 1.15 
+TH1F BB_ps_y   'BB Y position of PS' BB.ts.sh.y 55 -0.5 0.5
+
+TH2F BB_sh_x_y    'BB Shower Hits on X-Y' BB.ts.sh.y BB.ts.sh.x 55 -0.3 0.3 55 -1.15 1.15
+TH2F BB_ps_x_y    'BB PS Hits on X-Y' BB.ts.ps.y BB.ts.sh.x 55 -0.5 0.55 55 -1.15 1.15
+
+#TDC
+TH1F BB_sum_t_ 'BB TSum TDC' BB.sum.RT 200 -1000 100 BB.sum.RT>-1000
+TH1F BB_psum_t_ 'BB PSum TDC' BB.psum.RT 200 -1000 100 BB.psum.RT>-1000
+TH1F BB_s_lt_ 'BB Scint Left TDC' BB.s.LT 200 -1000 100 BB.s.LT>-1000
+TH1F BB_s_rt_ 'BB Scint Right TDC' BB.s.RT 200 -1000 100 BB.s.RT>-1000

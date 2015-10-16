@@ -1,0 +1,36 @@
+############################## LEFT SCINTILLATOR PLANE 1 ################################
+# Number of Left Scintillator 1 paddles -------------------------------------------------
+       6
+# Crate,Slot,1st,Last ADC chans,Beg S1 chan (TDC = 1875)---------------------------------
+       3      23      22       27      1             - ADCs pads 1-6  (right)
+       3      23      16       21      7             - ADCs pads 7-12 (left)
+       4      18       8       13      1             - TDCs pads 1-6  (right)
+       4      18       0       5       7             - TDCs pads 7-12 (left)
+      -1       0       0       0       0
+# X,Y,Z coords (in m) of S1 front plane in spectrom cs ----------------------------------
+   -0.129     0.0   1.2873                                                - Meters
+# Half of X, half of Y, full Z sizes (in m) of S1 ---------------------------------------
+    0.88    0.18     0.005                                                - Meters
+# Rotation angle of the S1 plane --------------------------------------------------------
+     0.0                                                                  - Degrees
+# TDC time offsets of S1 in TDC channels ------------------------------------------------
+   382.36 196.14 40.16 -457.95 246.49 287.19                              - Left Paddles
+   273.22 296.38 457.65 458.49 480.31 536.69                              - Right Paddles
+# Pedestal values of S1 ADC channels ----------------------------------------------------
+   469   489   327   334  631   490                                       - Left Paddles
+   617   560   481   340  301   357                                       - Right Paddles  
+# Amplitude transformation coefficients of S1 ADC channels ------------------------------
+   0.979   1.007   0.989   0.986   1.007   0.948                          - Left Paddles
+   1.045   1.003   0.965   1.015   0.989   0.942                          - Right Paddles
+# Time-conversion for the TDC (seconds/channel)------------------------------------------
+   0.050e-9
+# Speed of light in the scintillator ----------------------------------------------------
+     1.49859e+08
+# Attenuation length in inverse meters (carried over) -----------------------------------
+  0.7
+# Timewalk parameters -- ADC above pedestal for MIP -------------------------------------
+  1295.7
+# Timewalk polynomial factors -----------------------------------------------------------
+  182.496e-9  168.115e-9  157.336e-9  127.778e-9  125.327e-9  126.407e-9  - Left Paddles
+  38.3861e-9  33.7445e-9  16.8885e-9  23.4822e-9  46.0214e-9  5.47880e-9  - Right Paddles
+#########################################################################################

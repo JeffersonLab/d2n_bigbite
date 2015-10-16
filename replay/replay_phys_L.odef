@@ -1,0 +1,178 @@
+# ----------------------------------------------------------------
+# Transversity Physics Replay Output Configuration File
+# Author : Jin Huang <jinhuang@jlab.org> 
+# ----------------------------------------------------------------
+#
+#
+# Analyzer output definition file used by THaOutput class.
+# See  http://hallaweb.jlab.org/root/THaOutput.html
+# R. Michaels, June 2003
+# Comments start with '# '  (careful, need a space after #) 
+#
+# There are at present 3 places where output is defined
+# in the C++ analyzer, and this is one of them.
+# The other two are THaRun (run-dependent info) and
+# THaEvent (event-dependent info), which provide quantities 
+# like run number and event number that you always need.
+# In this place, the "outdef" file, one can define
+# global variables, formulas, and histograms, as well
+# as cuts on histograms.  The results of the formulas appear 
+# in the tree with the formula-name given.
+#
+# Syntax of file  -- by example:
+#
+# variable   L.vdc.u2.nclust
+# variable   R.s1.lt
+# formula    targetX  1.464*BB.bpm4b.x-0.464*BB.bpm4a.x
+# TH1F  rv1n  'R-arm vdc hits on V1'   R.vdc.v1.nhit 100 0 10
+# TH1F  rv1w  'R-arm vdc wiremap on V1'  R.vdc.v1.wire 100 0 500
+# TH1F  tgtx  'Target X position'  targetX 100 -2 2 
+# TH2F  t12  'Time stamps on roc1 vs roc2'  D.timeroc1  D.timeroc2
+#       100 0 1000 100 0 1000
+# TH1F  Rv1n 'R-arm VDC nhit (cut)' R.vdc.v1.nhit 100 0 10 R.vdc.v1.nhit>3
+# (note, the cut R.vdc.v1.nhit appears optionally at the end, also
+#  this variable cannot be a variable-sized array)
+#
+#
+# The lines are of the form
+#     keyword  rest-of-line
+#
+# where the keywords are as follows :
+# (the keywords are case-insensitive, the rest of the line is not)
+#
+#  VARIABLE  -- indicates that a global variable is to
+#              be added to the tree.  
+#              The next string is the name of the variable.  
+#              You can see a list of variables by typing 
+#              gHaVars->Print() at the analyzer's root shell prompt.
+#              A variable can also be an array, e.g. R.s1.lt  
+#              Then the values in the tree will be R.s1.lt.data[0], 
+#              R.s1.lt.data[1], etc, up to the array size which
+#              is Ndata.R.s1.lt
+# 
+#  BLOCK   --  An entire block of variables are written to the
+#              output.  E.g. "L.*" writes all Left HRS variables.
+#
+#  FORMULA -- indicates a THaFormula to add to the output.
+#             The next word will be the "name" of the formula result 
+#             in the tree. The 3rd string is the formula to evaluate.  
+#             Note, it cannot have spaces in it.
+#             Formulas can be vectors if the arrays are fixed size.
+#
+#  CUT --     Like a formula, but the data are 0 (false) or 1 (true)
+#
+#  TH1F, TH2F, TH1D, TH2D  -- defines histograms (1D or 2D).
+#              The next word is the name of the object.
+#              The following string (must be in single quotes) is  
+#              the title of the histogram.  Next, the variables
+#              or formulas names that are put into the histogram 
+#              are listed together with bin info: nbin, xlo, xhi and if 2D
+#              the same bin info for y.  Optional cuts can be specified 
+#              at the end of the line.  See examples below.  
+#
+# ------------------------------------
+
+# List of the variable blocks to be written out
+
+block L.tr.* 
+block L.gold.* 
+block ReactPt_L.* 
+block ExTgtCor_L.* 
+block L.cer.*
+block L.prl1.*
+block L.prl2.*
+
+block PriKineL.*
+block PriKineLHe3.*
+
+block adchel.L.helicity
+block adchel2.L.helicity
+block g0hel.L.helicity
+
+
+block urb.*
+block rb.*
+
+block DL.*
+
+# ------------------------------------------------
+# Status Check
+# ------------------------------------------------
+
+# Trigger
+
+TH1F HEvType  'Trigger type' DL.evtype    20 2 9
+
+
+# Helicity
+
+TH1F adchel 'Helicity (ADC)' adchel.L.helicity 10 -2 2
+TH1F g0hel 'Helicity (G0/TIR)' g0hel.L.helicity 10 -2 2
+TH1F heldiff 'Helicity Diff (G0 - ADC)' (g0hel.L.helicity-adchel.L.helicity) 10 -2 2
+
+
+# ------------------------------------------------
+# Flags & Cuts
+# ------------------------------------------------
+# Flags used to cut plots
+
+# -----------------------
+# Spin And Helicity Flag
+# -----------------------
+
+FORMULA IsLeftHelicity adchel.L.helicity==-1
+FORMULA IsRightHelicity adchel.L.helicity==1
+
+
+# -----------------------
+# Trigger Flag
+# -----------------------
+
+FORMULA InclusiveEvt ((DL.evtypebits&(1<<3))==(1<<3))||((DL.evtypebits&(1<<4))==(1<<4))
+
+#removing T4 trigger:
+#FORMULA InclusiveEvt ((DL.evtypebits&(1<<3))==(1<<3))
+
+# -----------------------
+# Particle Flag
+# -----------------------
+
+# Good Electron cut
+# add more you have better idea
+formula prl_E_P  (L.prl1.e+L.prl2.e)/(1000.*ExTgtCor_L.p)
+FORMULA GoodLTrack   abs(ExTgtCor_L.dp)<0.05&&L.tr.n>=1&&abs(ReactPt_L.z)<0.25
+FORMULA GoodElectron  L.cer.asum_c>400
+
+# -----------------------
+# Event Flag
+# -----------------------
+
+FORMULA InclCut GoodLTrack&&InclusiveEvt&&GoodElectron
+
+
+# ------------------------------------------------
+# physics variables
+# ------------------------------------------------
+
+
+# Kinematics Variables
+
+FORMULA InvMass sqrt(PriKineL.W2)
+FORMULA ScaAngle PriKineL.angle*180/3.1415927
+
+
+# -----------------------
+# Inclusive Events
+# -----------------------
+
+TH1F InclScatAngle 'Left HRS Scattering angle' ScaAngle 100 35 55 InclCut
+TH1F InclQ3m       'Magnitude of 3-momentum transfer' PriKineL.q3m 100 3 6 InclCut
+TH1F InclNu        'Energy Transfer' PriKineL.nu 100 2.0 5.6 InclCut
+
+TH1F InclQ2        'Q^2 (GeV)' PriKineL.Q2  100 0. 7  InclCut
+TH1F InclInvMass   'W (GeV)' InvMass  100 0.5 5  InclCut
+TH1F InclX         'Bjorken x' PriKineL.x_bj 100 0 1 InclCut
+
+TH2F InclXW        'Inclusive Phase Space : W vs x'   PriKineL.x_bj InvMass 50 0 1 50 0.5 5 InclCut
+TH2F InclXQ2       'Inclusive Phase Space : Q2 vs x'  PriKineL.x_bj PriKineL.Q2 50 0 1 50 0 7 InclCut
+TH2F InclXNu       'Inclusive Phase Space : Nu vs x'  PriKineL.x_bj PriKineL.nu 50 0 1 50 2.0 5.6 InclCut

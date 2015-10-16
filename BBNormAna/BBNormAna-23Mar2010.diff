@@ -1,0 +1,31 @@
+--- BBNormAna.cxx	2009-06-22 16:18:10.000000000 -0400
++++ /home/brads/BBNormAna.cxx	2010-03-24 16:58:17.000000000 -0400
+@@ -668,13 +668,26 @@
+ //   calib_d10 = 2.112068e+04;  off_d10 = 289.062;
+ 
+   //1 parameter fit with offsets fixed.(Feb 2009)
+-    calib_u1 =  2101.87; off_u1 =  395.804;
++/*    calib_u1 =  2101.87; off_u1 =  395.804;
+     calib_u3 =  6464.39; off_u3 =  453.4;
+     calib_u10 = 19718.3; off_u10 = 770.516; 
+     calib_d1 =  2147.88; off_d1 =  154.577;
+     calib_d3 = 6645.89; off_d3 =  133.319;
+-    calib_d10 = 20952; off_d10 = 293.463;
++    calib_d10 = 20952; off_d10 = 293.463;*/
+ 
++	// 1-Parameter Fit for d2n (offsets fixed; updated Mar 2010; calibration run from Feb 2009)
++	calib_u1 = 2102.26;
++	off_u1 = 395.8;
++	calib_u3 = 6480.30;
++	off_u3 = 453.393;
++	calib_u10 = 19731.3;
++	off_u10 = 770.66;
++	calib_d1 = 2152.44;
++	off_d1 = 154.58;
++	calib_d3 = 6658.34;
++	off_d3 = 133.27;
++	calib_d10 = 21007.6;
++	off_d10 = 293.48;	
+  
+   return fStatus = static_cast<EStatus>( SetupRawData( &run_time ) );
+ 

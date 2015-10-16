@@ -1,0 +1,44 @@
+#####################################TODO########################################
+detector package: LHRS
+date: 2009.09.21
+author: David Flay
+
+-- Positive Polarity calibrations need to be done, and the subsequent changes to 
+   be made to the DB files 'db_L.prl1.dat', 'db_L.prl2.dat', and 'db_L.cer.dat' for 
+   the gas Cerenkov and the Pion Rejector.
+   
+-- We need to figure out how to apply the polarity changes correctly so that runs 
+   that occured just *before/after* the polarity change *do not* see the wrong 
+   calibration coefficients.  The polarity changes tend to occur midday, 
+   so the directories 20090302, 20090304, 20090309, 20090313 (on the LHRS side at least) 
+   need to be modified to reflect such a change.  Matt and I have been in contact 
+   with Xin and have his script that handles this issue, so we're working on it. 
+   I have made a file labeled 'filetime_d2n' which documents the run number, 
+   which database subdirectory (YYYYMMDD) it pulls information from, and the
+   start time of the run.  This file will be input for the script that will switch 
+   subdirectories when we encounter a polarity change or some other change midday. 
+
+-- The LHRS physics replay still needs work as it is not operational.  In particular, 
+   the kinematics calculations for pions is not working, and is the main feature 
+   of the LHRS physics replay. 
+
+-- Matt and I need to develop the coincidence physics replay. 
+
+-- My analyzer throws the error when running 'replay_det_L.C':
+
+   Error in <"L.trg"::OpenFile()>: Cannot open database file db_L.trg.dat
+
+   Speaking with Brad, the 'db_L.trg.dat' file has to do with correcting for timing 
+   offsets between different trigger types.  It comes from the THaTriggerTime class. 
+   This has to be integrated into the analyzer properly.
+
+-- I am currently working on getting the onlineGUI to work again, so that we may do 
+   a quick check on our replays without having to run our individual scripts in full.  
+   I have been in contact with Bryan Moffit (who wrote the GUI), and I have it operational 
+   in principle -- but I would like to make it a bit smoother -- remove extraneous plots, and 
+   have the GUI only produce the 'characteristic' ones for the LHRS, adjust the scales, etc.  
+   I would rather send out the final version and directions on how to use it when I finish 
+   with the fine-tuning.
+ 
+#################################################################################
+

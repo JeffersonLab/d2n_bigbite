@@ -1,0 +1,265 @@
+block BB.*
+block DBB.*
+block g.*
+block adchel.BB.*
+block adchel2.BB.*
+block BBrb.*
+block BBurb.*
+block rb.*
+block urb.*
+block adchel.BB.helicity
+block adchel2.BB.helicity
+#block adchel.L.helicity
+#block adchel2.L.helicity
+#block g0hel.L.helicity
+block PriKineBB.*
+
+#scalar data
+begin scalers bbite
+   clock 4 7
+   clockcnt 4 7 counts
+   L1A 4 8
+   bcm_u1 4 16
+   bcm_u3 4 17
+   bcm_u10 4 18
+   bcm_d1 4 19
+   bcm_d3 4 20
+   bcm_d10 4 21
+end scalers
+
+#Shower blocks ADC
+TH1F BB_sh_a_ 'BB Shower ADCs' BB.ts.sh.a 200 0 1500 BB.ts.sh.a>0.
+TH1F BB_sh_a_p_ 'BB Shower ped_sub ADCs' BB.ts.sh.a_p 200 0 1500 BB.ts.sh.a>0.
+
+#Preshower blocks ADC
+TH1F BB_ps_a_ 'BB PS ADCs' BB.ts.ps.a 200 0 2000 BB.ts.ps.a>0.
+TH1F BB_ps_a_p_ 'BB PS ped_sub ADCs' BB.ts.ps.a_p 200 0 2000 BB.ts.ps.a_p>0.
+
+#Total Sum ADC
+TH1F BB_sum_a_ 'BB TSum ADCs' BB.sum.RA 200 0 4000 BB.sum.RA>0.
+TH1F BB_sum_a_p_ 'BB TSum ped_sub ADCs' BB.sum.RApedc 200 0 4000 BB.sum.RApedc>0.
+
+#Preshower Sum ADC
+TH1F BB_psum_a_ 'BB PSum ADCs' BB.psum.RA 300 0 3000 BB.psum.RA>0.
+TH1F BB_psum_a_p_ 'BB PSum ped_sub ADCs' BB.psum.RApedc 300 0 3000 BB.psum.RApedc>0.
+
+#Scint ADC
+TH1F BB_sl_a_ 'BB Scint Left ADCs' BB.s.LA 200 0 4000 BB.s.LA>0.
+TH1F BB_sl_a_p_ 'BB Scint Left ped_sub ADCs' BB.s.LApedc 200 0 4000 BB.s.LApedc>0.
+TH1F BB_sr_a_ 'BB Scint Right ADCs' BB.s.RA 200 0 4000 BB.s.RA>0.
+TH1F BB_sr_a_p_ 'BB Scint Right ped_sub ADCs' BB.s.RApedc 200 0 4000 BB.s.RApedc>0.
+
+#Cluster position Y-horizontal array(7), X-vertical array(27)
+TH1F BB_sh_x   'BB X position of Shower' BB.ts.sh.x 55 -1.15 1.15 
+TH1F BB_sh_y   'BB Y position of Shower' BB.ts.sh.y 15 -0.3 0.3 
+TH1F BB_ps_x   'BB X position of PS' BB.ts.ps.x 55 -1.15 1.15 
+TH1F BB_ps_y   'BB Y position of PS' BB.ts.ps.y 5 -0.5 0.5 
+
+TH2F BB_sh_x_y    'BB Shower Hits on X-Y' BB.ts.sh.y BB.ts.sh.x 55 -0.3 0.3 55 -1.15 1.15 
+TH2F BB_ps_x_y    'BB PS Hits on X-Y' BB.ts.ps.y BB.ts.ps.x 55 -0.5 0.55 55 -1.15 1.15 
+
+
+#TDC
+TH1F BB_sum_t_ 'BB TSum TDC' BB.sum.RT 200 -1000 100 BB.sum.RT>-1000&&DBB.evtype==2
+TH1F BB_psum_t_ 'BB PSum TDC' BB.psum.RT 200 -1000 100 BB.psum.RT>-1000&&DBB.evtype==2
+TH1F BB_s_lt_ 'BB Scint Left TDC' BB.s.LT 200 -1000 100 BB.s.LT>-1000&&DBB.evtype==2
+TH1F BB_s_rt_ 'BB Scint Right TDC' BB.s.RT 200 -1000 100 BB.s.RT>-1000&&DBB.evtype==2
+
+
+# ----------------------------------------------------------------------------------
+# BigBite Wire Chamber: (Xin Qian)
+TH1F bbu1wire 'BigBite MWDC u1 hits per wire' BB.mwdc.u1.hit.wire 141 0 141
+TH1F bbu1pwire 'BigBite MWDC u1p hits per wire' BB.mwdc.u1p.hit.wire 141 0 141
+TH1F bbu2wire 'BigBite MWDC u2 hits per wire' BB.mwdc.u2.hit.wire 202 0 201
+TH1F bbu2pwire 'BigBite MWDC u2p hits per wire' BB.mwdc.u2p.hit.wire 202 0 201
+TH1F bbu3wire 'BigBite MWDC u3 hits per wire' BB.mwdc.u2.hit.wire 202 0 201
+TH1F bbu3pwire 'BigBite MWDC u3p hits per wire' BB.mwdc.u2p.hit.wire 202 0 201
+TH1F bbx1wire 'BigBite MWDC x1 hits per wire' BB.mwdc.x1.hit.wire 141 0 141
+TH1F bbx1pwire 'BigBite MWDC x1p hits per wire' BB.mwdc.x1p.hit.wire 141 0 141
+TH1F bbx2wire 'BigBite MWDC x2 hits per wire' BB.mwdc.x2.hit.wire 203 0 202
+TH1F bbx2pwire 'BigBite MWDC x2p hits per wire' BB.mwdc.x2p.hit.wire 203 0 202
+TH1F bbx3wire 'BigBite MWDC x3 hits per wire' BB.mwdc.x3.hit.wire 203 0 202
+TH1F bbx3pwire 'BigBite MWDC x3p hits per wire' BB.mwdc.x3p.hit.wire 203 0 202
+TH1F bbv1wire 'BigBite MWDC v1 hits per wire' BB.mwdc.v1.hit.wire 141 0 141
+TH1F bbv1pwire 'BigBite MWDC v1p hits per wire' BB.mwdc.v1p.hit.wire 141 0 141
+TH1F bbv2wire 'BigBite MWDC v2 hits per wire' BB.mwdc.v2.hit.wire 202 0 201
+TH1F bbv2pwire 'BigBite MWDC v2p hits per wire' BB.mwdc.v2p.hit.wire 202 0 201
+TH1F bbv3wire 'BigBite MWDC v3 hits per wire' BB.mwdc.v3.hit.wire 202 0 201
+TH1F bbv3pwire 'BigBite MWDC v3p hits per wire' BB.mwdc.v3p.hit.wire 202 0 201
+	
+
+TH1F bbu1time 'BigBite MWDC u1 time' BB.mwdc.u1.hit.time 200 0 200e-9
+TH1F bbu1ptime 'BigBite MWDC u1p time' BB.mwdc.u1p.hit.time 200 0 200e-9
+TH1F bbu2time 'BigBite MWDC u2 time' BB.mwdc.u2.hit.time 200 0 200e-9
+TH1F bbu2ptime 'BigBite MWDC u2p time' BB.mwdc.u2p.hit.time 200 0 200e-9
+TH1F bbu3time 'BigBite MWDC u3 time' BB.mwdc.u3.hit.time 200 0 200e-9
+TH1F bbu3ptime 'BigBite MWDC u3p time' BB.mwdc.u3p.hit.time 200 0 200e-9
+TH1F bbx1time 'BigBite MWDC x1 time' BB.mwdc.x1.hit.time 200 0 200e-9
+TH1F bbx1ptime 'BigBite MWDC x1p time' BB.mwdc.x1p.hit.time 200 0 200e-9
+TH1F bbx2time 'BigBite MWDC x2 time' BB.mwdc.x2.hit.time 200 0 200e-9
+TH1F bbx2ptime 'BigBite MWDC x2p time' BB.mwdc.x2p.hit.time 200 0 200e-9
+TH1F bbx3time 'BigBite MWDC x3 time' BB.mwdc.x3.hit.time 200 0 200e-9
+TH1F bbx3ptime 'BigBite MWDC x3p time' BB.mwdc.x3p.hit.time 200 0 200e-9
+TH1F bbv1time 'BigBite MWDC v1 time' BB.mwdc.v1.hit.time 200 0 200e-9
+TH1F bbv1ptime 'BigBite MWDC v1p time' BB.mwdc.v1p.hit.time 200 0 200e-9
+TH1F bbv2time 'BigBite MWDC v2 time' BB.mwdc.v2.hit.time 200 0 200e-9
+TH1F bbv2ptime 'BigBite MWDC v2p time' BB.mwdc.v2p.hit.time 200 0 200e-9
+TH1F bbv3time 'BigBite MWDC v3 time' BB.mwdc.v3.hit.time 200 0 200e-9
+TH1F bbv3ptime 'BigBite MWDC v3p time' BB.mwdc.v3p.hit.time 200 0 200e-9
+
+TH1F bbu1hit 'BigBite MWDC u1 number of hits' BB.mwdc.u1.nhits 100 0 100
+TH1F bbu1phit 'BigBite MWDC u1p number of hits' BB.mwdc.u1p.nhits 100 0 100
+TH1F bbu2hit 'BigBite MWDC u2 number of hits' BB.mwdc.u2.nhits 100 0 100
+TH1F bbu2phit 'BigBite MWDC u2p number of hits' BB.mwdc.u2p.nhits 100 0 100
+TH1F bbu3hit 'BigBite MWDC u3 number of hits' BB.mwdc.u3.nhits 100 0 100
+TH1F bbu3phit 'BigBite MWDC u3p number of hits' BB.mwdc.u3p.nhits 100 0 100
+TH1F bbx1hit 'BigBite MWDC x1 number of hits' BB.mwdc.x1.nhits 100 0 100
+TH1F bbx1phit 'BigBite MWDC x1p number of hits' BB.mwdc.x1p.nhits 100 0 100
+TH1F bbx2hit 'BigBite MWDC x2 number of hits' BB.mwdc.x2.nhits 100 0 100
+TH1F bbx2phit 'BigBite MWDC x2p number of hits' BB.mwdc.x2p.nhits 100 0 100
+TH1F bbx3hit 'BigBite MWDC x3 number of hits' BB.mwdc.x3.nhits 100 0 100
+TH1F bbx3phit 'BigBite MWDC x3p number of hits' BB.mwdc.x3p.nhits 100 0 100
+TH1F bbv1hit 'BigBite MWDC v1 number of hits' BB.mwdc.v1.nhits 100 0 100
+TH1F bbv1phit 'BigBite MWDC v1p number of hits' BB.mwdc.v1p.nhits 100 0 100
+TH1F bbv2hit 'BigBite MWDC v2 number of hits' BB.mwdc.v2.nhits 100 0 100
+TH1F bbv2phit 'BigBite MWDC v2p number of hits' BB.mwdc.v2p.nhits 100 0 100
+TH1F bbv3hit 'BigBite MWDC v3 number of hits' BB.mwdc.v3.nhits 100 0 100
+TH1F bbv3phit 'BigBite MWDC v3p number of hits' BB.mwdc.v3p.nhits 100 0 100
+
+# ----------------------------------------------------------------------------------
+# Bigbite Track Reconstrcution check
+
+FORMULA ElectronTrack BB.tr.n>=1&&BB.ts.ps.e>500
+FORMULA ThDegree BB.gold.th*180/3.1415927
+FORMULA PhDegree BB.gold.ph*180/3.1415927
+
+TH1F bbtrn  'Track Number per Event' BB.tr.n 5 -0.5 4.5
+TH2F bbtrxy 'Hits on the first Chamber x vs y' BB.tr.y BB.tr.x 100 -.2 .2 100 -.8 .8 ElectronTrack
+TH2F bbtrthph 'Track angular distr. Vert vs Horizontal' BB.tr.ph BB.tr.th 100 -.2 .2 100 -.8 .8 ElectronTrack
+
+TH1F bbp    'Track Momentum'   BB.gold.p 100 0 3 ElectronTrack
+TH1F bbz    'Vertex Reconstruct'   BB.tr.vz 100 -.5 .5 ElectronTrack
+TH1F bbpx   'Momentum Lab X' BB.gold.px 100 -1.6 0 ElectronTrack
+TH1F bbpy   'Momentum Lab Y' BB.gold.py 100 -.6 .6 ElectronTrack
+TH1F bbpz   'Momentum Lab Z' BB.gold.pz 100 0 3 ElectronTrack
+TH1F bbth   'Out of Plane Angle' ThDegree 100 -30 30 ElectronTrack
+TH1F bbph   'In Plane Angle (Rel. to BB Center)' 100 -10 10 PhDegree
+
+#Cerenkov ADCs
+TH1F BB_cer_a_ped_   'BB Cerenkov ADC'           BB.cer.a   300 0  900 BB.cer.a>0
+TH1F BB_cer_a_       'BB Cerenkov ADC'           BB.cer.a   400 0 4000 BB.cer.a>0
+TH1F BB_cer_a_p_     'BB Cerenkov ADC (ped sub)' BB.cer.a_p 400 0 400 BB.cer.a_p>0
+TH1F BB_cer_a_c_     'BB Cerenkov ADC (corrected)' BB.cer.a_c 400 0 1000 BB.cer.a_c>0
+
+TH1F BB_cer_asum_p  'BB Cerenkov ADC Sum (ped sub)' BB.cer.asum_p 400 0 4000 BB.cer.asum_p>0
+
+TH1F BB_cer_asum_c 'BB Cerenkov ADC Sum (corrected)' BB.cer.asum_c 400 0 4000 BB.cer.asum_c>0
+
+TH1F BB_cer_t_       'BB Cerenkov TDC'           BB.cer.t   400 0 4000 BB.cer.t>0
+
+
+
+#Cerenkov ADCs (DBB class)
+TH1F BB_cer_A01 'BB Cerenkov ADC 01' DBB.BBcerA01 400 0 8000
+TH1F BB_cer_A02 'BB Cerenkov ADC 02' DBB.BBcerA02 400 0 8000
+TH1F BB_cer_A03 'BB Cerenkov ADC 03' DBB.BBcerA03 400 0 8000
+TH1F BB_cer_A04 'BB Cerenkov ADC 04' DBB.BBcerA04 400 0 8000
+TH1F BB_cer_A05 'BB Cerenkov ADC 05' DBB.BBcerA05 400 0 8000
+TH1F BB_cer_A06 'BB Cerenkov ADC 06' DBB.BBcerA06 400 0 8000
+TH1F BB_cer_A07 'BB Cerenkov ADC 07' DBB.BBcerA07 400 0 8000
+TH1F BB_cer_A08 'BB Cerenkov ADC 08' DBB.BBcerA08 400 0 8000
+TH1F BB_cer_A09 'BB Cerenkov ADC 09' DBB.BBcerA09 400 0 8000
+TH1F BB_cer_A10 'BB Cerenkov ADC 10' DBB.BBcerA10 400 0 8000
+TH1F BB_cer_A11 'BB Cerenkov ADC 11' DBB.BBcerA11 400 0 8000
+TH1F BB_cer_A12 'BB Cerenkov ADC 12' DBB.BBcerA12 400 0 8000
+TH1F BB_cer_A13 'BB Cerenkov ADC 13' DBB.BBcerA13 400 0 8000
+TH1F BB_cer_A14 'BB Cerenkov ADC 14' DBB.BBcerA14 400 0 8000
+TH1F BB_cer_A15 'BB Cerenkov ADC 15' DBB.BBcerA15 400 0 8000
+TH1F BB_cer_A16 'BB Cerenkov ADC 16' DBB.BBcerA16 400 0 8000
+TH1F BB_cer_A17 'BB Cerenkov ADC 17' DBB.BBcerA17 400 0 8000
+TH1F BB_cer_A18 'BB Cerenkov ADC 18' DBB.BBcerA18 400 0 8000
+TH1F BB_cer_A19 'BB Cerenkov ADC 19' DBB.BBcerA19 400 0 8000
+TH1F BB_cer_A20 'BB Cerenkov ADC 20' DBB.BBcerA20 400 0 8000
+
+
+
+
+
+#Cerenkov TDCs
+TH1F BB_cer_T01 'BB Cerenkov TDC 01' DBB.BBcerT01 400 0 2000
+TH1F BB_cer_T02 'BB Cerenkov TDC 02' DBB.BBcerT02 400 0 2000
+TH1F BB_cer_T03 'BB Cerenkov TDC 03' DBB.BBcerT03 400 0 2000
+TH1F BB_cer_T04 'BB Cerenkov TDC 04' DBB.BBcerT04 400 0 2000
+TH1F BB_cer_T05 'BB Cerenkov TDC 05' DBB.BBcerT05 400 0 2000
+TH1F BB_cer_T06 'BB Cerenkov TDC 06' DBB.BBcerT06 400 0 2000
+TH1F BB_cer_T07 'BB Cerenkov TDC 07' DBB.BBcerT07 400 0 2000
+TH1F BB_cer_T08 'BB Cerenkov TDC 08' DBB.BBcerT08 400 0 2000
+TH1F BB_cer_T09 'BB Cerenkov TDC 09' DBB.BBcerT09 400 0 2000
+TH1F BB_cer_T10 'BB Cerenkov TDC 10' DBB.BBcerT10 400 0 2000
+TH1F BB_cer_T11 'BB Cerenkov TDC 11' DBB.BBcerT11 400 0 2000
+TH1F BB_cer_T12 'BB Cerenkov TDC 12' DBB.BBcerT12 400 0 2000
+TH1F BB_cer_T13 'BB Cerenkov TDC 13' DBB.BBcerT13 400 0 2000
+TH1F BB_cer_T14 'BB Cerenkov TDC 14' DBB.BBcerT14 400 0 2000
+TH1F BB_cer_T15 'BB Cerenkov TDC 15' DBB.BBcerT15 400 0 2000
+TH1F BB_cer_T16 'BB Cerenkov TDC 16' DBB.BBcerT16 400 0 2000
+TH1F BB_cer_T17 'BB Cerenkov TDC 17' DBB.BBcerT17 400 0 2000
+TH1F BB_cer_T18 'BB Cerenkov TDC 18' DBB.BBcerT18 400 0 2000
+TH1F BB_cer_T19 'BB Cerenkov TDC 19' DBB.BBcerT19 400 0 2000
+TH1F BB_cer_T20 'BB Cerenkov TDC 20' DBB.BBcerT20 400 0 2000
+
+#Cerenkov Group TDCs
+TH1F BB_cer_Tg01 'BB Cerenkov TDC Group 01' DBB.BBcerTg01 400 0 4000
+TH1F BB_cer_Tg02 'BB Cerenkov TDC Group 02' DBB.BBcerTg02 400 0 4000
+TH1F BB_cer_Tg03 'BB Cerenkov TDC Group 03' DBB.BBcerTg03 400 0 4000
+TH1F BB_cer_Tg04 'BB Cerenkov TDC Group 04' DBB.BBcerTg04 400 0 4000
+TH1F BB_cer_Tg05 'BB Cerenkov TDC Group 05' DBB.BBcerTg05 400 0 4000
+TH1F BB_cer_Tg06 'BB Cerenkov TDC Group 06' DBB.BBcerTg06 400 0 4000
+TH1F BB_cer_Tg07 'BB Cerenkov TDC Group 07' DBB.BBcerTg07 400 0 4000
+TH1F BB_cer_Tg08 'BB Cerenkov TDC Group 08' DBB.BBcerTg08 400 0 4000
+TH1F BB_cer_Tg09 'BB Cerenkov TDC Group 09' DBB.BBcerTg09 400 0 4000
+
+TH1F BB_cer_TTsg  'BB Cerenkov Trig Shower+Cer'    DBB.BBcerTTsg   400 0 4000
+TH1F BB_cer_TTcer 'BB Cerenkov Trig Cer'           DBB.BBcerTTcer  400 0 4000
+
+#MPS and Helicity 792 vs. 1881 plots
+TH2F bbMPSCor 'DBB.bbMPS_792 vs. DBB.bbMPS_1881' DBB.bbMPS_1881 DBB.bbMPS_792 20 0 18500 20 0 5000
+TH2F bbHelCor 'DBB.bbHel_792 vs. DBB.bbHel_1881' DBB.bbHel_1881 DBB.bbHel_792 20 0 18500 20 0 5000 
+
+#Raster correlations
+TH2F bbRastCor 'DBB.rasterx_792 vs. DBB.rasterx' DBB.rasterx DBB.rasterx_792 50 2000 8000 50 600 2700
+
+
+
+# ------------------------------------------------
+# physics variables
+# ------------------------------------------------
+
+
+#block PriKineBB.*
+#block PriKineBBHe3.*
+
+# Kinematics Variables
+
+FORMULA InvMass sqrt(PriKineBB.W2)
+FORMULA ScaAngle PriKineBB.angle*180/3.1415927
+
+# Good Electron cut
+# add more you have better idea
+FORMULA GoodBBTrack  BB.ts.ps.e>500&&BB.gold.p>0.01&&BB.gold.p<10&&BB.tr.n>=1
+
+# -----------------------
+# Inclusive Events
+# -----------------------
+
+TH1F InclScatAngle 'Left HRS Scattering angle' ScaAngle 100 10 50 GoodBBTrack
+TH1F InclQ3m       'Magnitude of 3-momentum transfer' PriKineBB.q3m 100 0 7 GoodBBTrack
+TH1F InclNu        'Energy Transfer' PriKineBB.nu 100 2 6 GoodBBTrack
+
+TH1F InclQ2        'Q^2 (GeV)' PriKineBB.Q2  100 0. 7  GoodBBTrack
+TH1F InclInvMass   'W (GeV)' InvMass  100 0. 5  GoodBBTrack
+TH1F InclX         'Bjorken x' PriKineBB.x_bj 100 0 1 GoodBBTrack
+
+TH2F InclXW        'Inclusive Phase Space : W vs x'   PriKineBB.x_bj InvMass 50 0 1 50 0 5 GoodBBTrack
+TH2F InclXQ2       'Inclusive Phase Space : Q2 vs x'  PriKineBB.x_bj PriKineBB.Q2 50 0 1 50 0 7 GoodBBTrack
+TH2F InclXNu       'Inclusive Phase Space : Nu vs x'  PriKineBB.x_bj PriKineBB.nu 50 0 1 50 0 7 GoodBBTrack
+

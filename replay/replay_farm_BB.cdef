@@ -1,0 +1,23 @@
+
+
+Block: RawDecode
+
+#RawDecode_master  g.evtyp==1||g.evtyp==2||g.evtyp==6||g.evtyp==7||g.evtyp==5
+
+
+Block: Decode
+
+#Decode_master  true
+#T1DL  DL.evtype==1
+#T2DL  DL.evtype==2
+#T5DL  DL.evtype==5
+#T6DL  DL.evtype==6
+#T7DL  DL.evtype==7
+#T1DBB  DBB.evtype==1
+#T2DBB  DBB.evtype==2
+#T5DBB  DBB.evtype==5
+#T6DBB  DBB.evtype==6
+#T7DBB  DBB.evtype==7
+
+Block: Tracking
+Tracking_master   BB.tr.n>0

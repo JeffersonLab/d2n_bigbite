@@ -1,0 +1,119 @@
+##################################CHANGELIST####################################
+detector package: LHRS
+date: 2009.09.21
+author: David Flay
+
+-- The information in 'replay_det_L.C' and 'replay_det_L.odef' concerning the RICH 
+   and Aerogel Cerenkov have been commented out.  
+
+-- The script 'replay_phys.C' has been adapted to reflect only the physics calculations
+   for the LHRS, now called 'replay_L_phys.C' (not operational, yet).  The 'rootlogon.C' 
+   file now loads the new LHRS physics replay file when you run the analyzer.  There is still 
+   a script labeled 'replay_phys.C'.  I believe Matt and I will soon adapt this for the coincience 
+   runs (see TODO).
+
+-- Every DB directory timestamped as 'YYYYMMDD' corresponding to the running of d2n 
+   has been modified to reflect the (gain-matching) calibration coefficients I have 
+   calculated for the gas Cerenkov and the Pion Rejector. For example, I have replaced 
+   every 'db_L.cer.dat', 'db_L.prl1.dat', and 'db_L.prl2.dat' file in each 'YYYYMMDD' 
+   directory with ones that have the updated calibration coefficients for the ADC amplitudes.  
+
+-- Added timestamped DB directories 20090208, 20090213, 20090223, 20090301, 20090302, 20090303,
+   20090304, 20090306, 20090309, 20090311, 20090312, 20090313, and 20090316 to the DB directory.  
+   These directories were added to account for cosmic runs and polarity changes in the LHRS, 
+   which have been documented under the special runs section of the wiki.  All other directories 
+   that do not correspond to d2n have been deleted.  
+
+-- Fixed the definition of the variable 'prl_E_P' in the 'replay_det_L.odef' file.  The definition was 
+   outdated/left over from the experiment prior to d2n.  The change made was:
+
+   formula    prl_E_P  (L.prl1.e+L.prl2.e)/(2350*(1.+ExTgtCor_L.dp))
+
+   is now:
+
+   formula    prl_E_P  (L.prl1.e+L.prl2.e)/(1000*ExTgtCor_L.p)
+    
+   I have left a comment in the *.odef file as a reminder of the changes.
+
+################################################################################
+detector package: LHRS
+date: 2009.10.01
+author: Matt Posik
+
+--Changed the 20090210 time-stamped dir [Raster_detmap] in files:
+        urb.Raster
+        rb.Raster 
+        urb.BPMA
+        urb.BPMB
+
+  From 
+     [Raster_detmap]
+               1 4 1 21 24 27 1881
+              -1 0 0 0  0  0  0
+
+ To 
+     Raster_detmap]
+                1      4          1            21          25 25     1881
+                1      4          1            21          24 24     1881
+                1      4          1            21          26 27     1881
+               -1      0          0             0           0  0       0
+^^^%%%%  change to Raster_detmap did not work switch
+urb.Raster
+        rb.Raster 
+        urb.BPMA
+        urb.BPMB
+ to original setup:
+   [Raster_detmap]
+               1 4 1 21 24 27 1881
+              -1 0 0 0  0  0  0
+
+
+################################################################################
+detector package: LHRS
+date: 2009.11.11
+author: David Flay
+
+-- I checked the subdirectory 20090306 and the DL.bitN histograms were not being 
+   built, which causes problems when trying to cut on evtypebits (for the LHRS).  
+   I've changed the DL.dat file so that these histograms are built upon replay of 
+   the runs that pull from this subdirectory.  I have also double checked every 
+   other directory, and things are set up properly -- all DL.bitN histograms 
+   are set to be built.  (Of course, the 20090210 directory has things set up 
+   on BB, which is OK since we ran in coin. mode for this time period.)  
+
+################################################################################
+detector package: LHRS
+date: 2010.01.17
+author: David Flay
+
+-- I have placed new calibration coefficients for the pion rejector 
+   'db_L.prlN.dat.*' ranging from *.1 to *.14 for particular to each major 
+   kinematic setting in the LHRS in each timestamped subdirectory in ~/DB.
+
+################################################################################  
+detector package: LHRS
+date: 2010.02.17
+author: David Flay
+
+-- I have updated the DB to now contain the proper calibration coefficents 
+   for the pion rejector for elastic/quasi-elastic data 
+   ('db_L.prl1.dat.15,' 'db_L.prl2.dat.15').  I have also updated the StartType.pl
+   script accordingly. 
+
+################################################################################   
+detector package: LHRS
+date: 2011.04.02
+author: David Flay
+
+-- I have updated the StartType.pl script to now include the Nitrogen runs 
+   (for both positive and negative polarity) in the pion rejector subroutine.  
+
+################################################################################   
+detector package: LHRS
+date: 2011.05.09
+author: David Flay
+
+-- I have updated the StartType.pl script to now include the Carbon runs 
+   (for both positive and negative polarity) in the pion rejector subroutine.  
+
+################################################################################   

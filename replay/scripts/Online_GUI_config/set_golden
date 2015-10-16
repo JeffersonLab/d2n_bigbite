@@ -1,0 +1,70 @@
+#!/bin/bash
+######################################################################
+# set_golden
+#  Bryan Moffit - April 2008
+#
+#  Silly script to set the golden rootfiles for the detector/physics
+#   replays.  
+#
+
+expID="e06010"
+
+ROOTfileDIR="/adaqfs/home/bbsoftw/e06010/onlana/ROOTfiles/"
+prefix_det_L=$expID"_det_L_"
+prefix_det_BB=$expID"_det_BB_"
+prefix_phys=$expID"_phys_"
+suffix=".root"
+
+function usage() {
+
+    echo " "
+    echo "set_golden [RUNNUMBER]"
+    echo "  where RUNNUMBER is the run number of the "
+    echo "  \"golden\" rootfile"
+    echo " "
+
+}
+
+if [ $# -lt 1 ] ; then
+    usage
+    exit
+fi
+
+runnumber=$1
+
+
+
+golden_det_BB=${ROOTfileDIR}${prefix_det_BB}${runnumber}${suffix}
+golden_det_L=${ROOTfileDIR}${prefix_det_L}${runnumber}${suffix}
+golden_phys=${ROOTfileDIR}${prefix_phys}${runnumber}${suffix}
+
+
+if [ -f ${golden_det_L} ] ; then
+    ln -sf ${golden_det_L} golden_det_L.root
+    echo "Softlink to $golden_det_L created"
+else
+    echo "$golden_det_L doesn't exist!"
+fi
+
+
+if [ -f ${golden_det_BB} ] ; then
+    ln -sf ${golden_det_BB} golden_det_BB.root
+    echo "Softlink to $golden_det_BB created"
+else
+    echo "$golden_det_BB doesn't exist!"
+fi
+
+if [ -f ${golden_phys} ] ; then
+    ln -sf ${golden_phys} golden_phys.root
+    echo "Softlink to $golden_phys created"
+else
+    echo "$golden_phys doesn't exist!"
+fi
+    
+# if [ -f ${golden_phys} ] ; then
+#    ln -sf ${golden_phys} golden_physics.root
+#    echo "Softlink to $golden_phys created"
+# else
+#    echo "$golden_phys doesn't exist!"
+# fi
+    

@@ -1,0 +1,336 @@
+# Analyzer output definition file used by THaOutput class.
+# See  http://hallaweb.jlab.org/root/THaOutput.html
+# R. Michaels, June 2003
+# Comments start with '# '  (careful, need a space after #) 
+#
+# There are at present 3 places where output is defined
+# in the C++ analyzer, and this is one of them.
+# The other two are THaRun (run-dependent info) and
+# THaEvent (event-dependent info), which provide quantities 
+# like run number and event number that you always need.
+# In this place, the "outdef" file, one can define
+# global variables, formulas, and histograms, as well
+# as cuts on histograms.  The results of the formulas appear 
+# in the tree with the formula-name given.
+#
+# Syntax of file  -- by example:
+#
+# variable   L.vdc.u2.nclust
+# variable   R.s1.lt
+# formula    targetX  1.464*BB.bpm4b.x-0.464*BB.bpm4a.x
+# TH1F  rv1n  'R-arm vdc hits on V1'   R.vdc.v1.nhit 100 0 10
+# TH1F  rv1w  'R-arm vdc wiremap on V1'  R.vdc.v1.wire 100 0 500
+# TH1F  tgtx  'Target X position'  targetX 100 -2 2 
+# TH2F  t12  'Time stamps on roc1 vs roc2'  D.timeroc1  D.timeroc2
+#       100 0 1000 100 0 1000
+# TH1F  Rv1n 'R-arm VDC nhit (cut)' R.vdc.v1.nhit 100 0 10 R.vdc.v1.nhit>3
+# (note, the cut R.vdc.v1.nhit appears optionally at the end, also
+#  this variable cannot be a variable-sized array)
+#
+#
+# The lines are of the form
+#     keyword  rest-of-line
+#
+# where the keywords are as follows :
+# (the keywords are case-insensitive, the rest of the line is not)
+#
+#  VARIABLE  -- indicates that a global variable is to
+#              be added to the tree.  
+#              The next string is the name of the variable.  
+#              You can see a list of variables by typing 
+#              gHaVars->Print() at the analyzer's root shell prompt.
+#              A variable can also be an array, e.g. R.s1.lt  
+#              Then the values in the tree will be R.s1.lt.data[0], 
+#              R.s1.lt.data[1], etc, up to the array size which
+#              is Ndata.R.s1.lt
+# 
+#  BLOCK   --  An entire block of variables are written to the
+#              output.  E.g. "L.*" writes all Left HRS variables.
+#
+#  FORMULA -- indicates a THaFormula to add to the output.
+#             The next word will be the "name" of the formula result 
+#             in the tree. The 3rd string is the formula to evaluate.  
+#             Note, it cannot have spaces in it.
+#             Formulas can be vectors if the arrays are fixed size.
+#
+#  CUT --     Like a formula, but the data are 0 (false) or 1 (true)
+#
+#  TH1F, TH2F, TH1D, TH2D  -- defines histograms (1D or 2D).
+#              The next word is the name of the object.
+#              The following string (must be in single quotes) is  
+#              the title of the histogram.  Next, the variables
+#              or formulas names that are put into the histogram 
+#              are listed together with bin info: nbin, xlo, xhi and if 2D
+#              the same bin info for y.  Optional cuts can be specified 
+#              at the end of the line.  See examples below.  
+#
+# ------------------------------------
+
+# List of the variable blocks to be written out
+
+#block BB.*
+block L.tr.*
+block L.s1.*
+block L.s2.*
+#block L.a1.*
+block L.prl1.*
+block L.prl2.*
+block L.cer.*
+block adchel.L.*
+block adchel2.L.*
+block g0hel.L.*
+block L.vdc.*
+#block L.vdc.*
+#block PriKine.*
+block ReactPt_L.*
+block ExTgtCor_L.*
+#block SecKine.*
+block DL.*
+block rb.*
+block urb.*
+block L.gold.*
+#block Norm.*
+#block Beam.HL.*
+
+# Here are variables and formulas that appear in the tree.
+
+# Beam position and Raster
+FORMULA urbax 1000.*urb.BPMA.x
+FORMULA urbay 1000.*urb.BPMA.y
+FORMULA urbbx 1000.*urb.BPMB.x
+FORMULA urbby 1000.*urb.BPMB.y
+FORMULA urbx 1000.*urb.x
+FORMULA urby 1000.*urb.y
+FORMULA rawcurx 1000.*rb.Raster.rawcur.x
+FORMULA rawcury 1000.*rb.Raster.rawcur.y
+FORMULA urby 1000.*urb.y
+FORMULA urby 1000.*urb.y
+
+TH1F bpma_x 'BPMA x [mm]' urbax 4000 -7. 7.
+TH1F bpma_y 'BPMA y [mm]' urbay 4000 -7. 7.
+
+TH1F bpmb_x 'BPMB x [mm]' urbbx 4000 -7. 7.
+TH1F bpmb_y 'BPMB y [mm]' urbby 4000 -7. 7.
+
+TH1F beam_x 'x at target [mm]' urbx 4000  -7. 8.
+TH1F beam_y 'y at target [mm]' urby 4000  -7. 8.
+
+TH2F bpma_xy 'BPMA y vs x'  urbax urbay 200 -7.  7. 200 -7. 7.
+TH2F bpmb_xy 'BPMB y vs y'  urbbx  urbby 200 -7.  7. 200 -7.  7.
+TH2F beam_xy 'beam at target y vs x'  urbx urby 200 -7. 8. 200 -7. 8.
+# Added by Bob M. Fri Mar 23, 2007
+TH2F rastxy 'Raster X vs Y (current)' rb.Raster.rawcur.y rb.Raster.rawcur.x 200 1000 7000 200 1000 7000
+
+TH1F bpmaraw1 'BPMA Antenna 1' urb.BPMA.rawcur.1 2000 0 16500
+TH1F bpmaraw2 'BPMA Antenna 2' urb.BPMA.rawcur.2 2000 0 16500
+TH1F bpmaraw3 'BPMA Antenna 3' urb.BPMA.rawcur.3 2000 0 16500
+TH1F bpmaraw4 'BPMA Antenna 4' urb.BPMA.rawcur.4 2000 0 16500
+TH1F bpmbraw1 'BPMB Antenna 1' urb.BPMB.rawcur.1 2000 0 16500
+TH1F bpmbraw2 'BPMB Antenna 2' urb.BPMB.rawcur.2 2000 0 16500
+TH1F bpmbraw3 'BPMB Antenna 3' urb.BPMB.rawcur.3 2000 0 16500
+TH1F bpmbraw4 'BPMB Antenna 4' urb.BPMB.rawcur.4 2000 0 16500
+# 
+TH1F rastraw1 'Raster Current 1' rb.Raster.rawcur.x 2000 0 16500
+TH1F rastraw2 'Raster Current 2' rb.Raster.rawcur.y 2000 0 16500
+
+TH1F adchel 'Helicity (ADC)' adchel.L.helicity 10 -2 2
+TH1F g0hel 'Helicity (G0/TIR)' g0hel.L.helicity 10 -2 2
+TH1F heldiff 'Helicity Diff (G0 - ADC)' (g0hel.L.helicity-adchel.L.helicity) 10 -2 2
+
+
+# Target and Sieve
+formula    L_sv_x  ExTgtCor_L.x+ExTgtCor_L.th*1.16539
+formula    L_sv_y  ExTgtCor_L.y+ExTgtCor_L.ph*1.16539
+TH2F sieve 'Sieve Slit' L_sv_x L_sv_y  200 -0.1 0.1 200 -0.1 0.1
+TH1F dp 'Deviation from Central Momentum' L.tr.tg_dp 200 -0.1 0.1
+TH1F tgth 'Target Theta' L.tr.tg_th 200 -0.2 0.2
+TH1F tgph 'Target Phi' L.tr.tg_ph 200 -0.2 0.2
+TH1F tgy 'Target Y' L.tr.tg_y 200 -0.2 0.2
+TH1F zreact 'React Z' ReactPt_L.z 200 -0.4 0.4
+
+# ------------------------------------------------------------------
+# LEFT ARM DETECTORS 
+# ------------------------------------------------------------------
+# 
+
+TH1F HEvType  'Trigger type' DL.evtype  10 1 10
+
+#TH1F hel 'Helicity States' Beam.HL.helicity 10 -2 2 
+
+# LEFT ARM S1 and S2  ADC and TDC :
+TH1F Ls1lt 'Left arm S1 L-PMT TDCs' L.s1.lt 750 101 4000 L.s1.lt>0&&(DL.evtype==3||DL.evtype==5||DL.evtype==8)&&DL.edtpl==0
+TH1F Ls1rt 'Left arm S1 R-PMT TDCs' L.s1.rt 750 101 4000 L.s1.rt>0&&(DL.evtype==3||DL.evtype==5||DL.evtype==8)&&DL.edtpl==0
+TH1F Ls2lt 'Left arm S2 L-PMT TDCs' L.s2.lt 750 0 4000 L.s2.lt>0&&(DL.evtype==3||DL.evtype==5||DL.evtype==8)&&DL.edtpl==0
+TH1F Ls2rt 'Left arm S2 R-PMT TDCs' L.s2.rt 750 0 4000 L.s2.rt>0&&(DL.evtype==3||DL.evtype==5||DL.evtype==8)&&DL.edtpl==0
+
+TH1F Ls1la 'Left arm S1 L-PMT ADCs' L.s1.la 1000 1 4000 L.s1.la>0&&(DL.evtype==3||DL.evtype==5||DL.evtype==8)&&DL.edtpl==0
+TH1F Ls1ra 'Left arm S1 R-PMT ADCs' L.s1.ra 1000 1 4000 L.s1.ra>0&&(DL.evtype==3||DL.evtype==5||DL.evtype==8)&&DL.edtpl==0
+TH1F Ls2la 'Left arm S2 L-PMT ADCs' L.s2.la 1000 1 1000 L.s2.la>0&&(DL.evtype==3||DL.evtype==5||DL.evtype==8)&&DL.edtpl==0
+TH1F Ls2ra 'Left arm S2 R-PMT ADCs' L.s2.ra 1000 1 1000 L.s2.ra>0&&(DL.evtype==3||DL.evtype==5||DL.evtype==8)&&DL.edtpl==0
+
+TH1F Ls1la_p 'Left arm S1 L-PMT ADCs (PedSub)' L.s1.la_p 200 -200 3999 L.s1.la_p>0&&(DL.evtype==3||DL.evtype==5||DL.evtype==8)&&DL.edtpl==0
+TH1F Ls1ra_p 'Left arm S1 R-PMT ADCs (PedSub)' L.s1.ra_p 200 -200 3999 L.s1.ra_p>0&&(DL.evtype==3||DL.evtype==5||DL.evtype==8)&&DL.edtpl==0
+TH1F Ls2la_p 'Left arm S2 L-PMT ADCs (PedSub)' L.s2.la_p 200 -200 999 L.s2.la_p>0&&(DL.evtype==3||DL.evtype==5||DL.evtype==8)&&DL.edtpl==0
+TH1F Ls2ra_p 'Left arm S2 R-PMT ADCs (PedSub)' L.s2.ra_p 200 -200 999 L.s2.ra_p>0&&(DL.evtype==3||DL.evtype==5||DL.evtype==8)&&DL.edtpl==0
+
+
+# ------------------------------------------------------------------
+# LEFT ARM VDC wires and timing  :
+#CUT leftOnly 1
+TH1F Lvu1t 'L-arm VDC u1 time' L.vdc.u1.rawtime 200 401 2400  (DL.evtype==3||DL.evtype==5||DL.evtype==8) #leftOnly
+TH1F Lvu2t 'L-arm VDC u2 time' L.vdc.u2.rawtime 200 401 2400  (DL.evtype==3||DL.evtype==5||DL.evtype==8) #leftOnly
+TH1F Lvv1t 'L-arm VDC v1 time' L.vdc.v1.rawtime 200 401 2400  (DL.evtype==3||DL.evtype==5||DL.evtype==8) #leftOnly
+TH1F Lvv2t 'L-arm VDC v2 time' L.vdc.v2.rawtime 200 401 2400  (DL.evtype==3||DL.evtype==5||DL.evtype==8) #leftOnly
+
+TH1F Lvu1w 'L-arm VDC u1 wires' L.vdc.u1.wire 400 1 400  (DL.evtype==3||DL.evtype==5||DL.evtype==8) #leftOnly
+TH1F Lvu2w 'L-arm VDC u2 wires' L.vdc.u2.wire 400 1 400  (DL.evtype==3||DL.evtype==5||DL.evtype==8) #leftOnly
+TH1F Lvv1w 'L-arm VDC v1 wires' L.vdc.v1.wire 400 1 400  (DL.evtype==3||DL.evtype==5||DL.evtype==8) #leftOnly
+TH1F Lvv2w 'L-arm VDC v2 wires' L.vdc.v2.wire 400 1 400  (DL.evtype==3||DL.evtype==5||DL.evtype==8) #leftOnly
+
+#TH1F Lv1nhit 'L-arm VDC v1 hits' L.vdc.v1.nhit 20 1 20  (DL.evtype==3||DL.evtype==5||DL.evtype==8) #leftOnly
+#TH1F Lv2nhit 'L-arm VDC v2 hits' L.vdc.v2.nhit 20 1 20  (DL.evtype==3||DL.evtype==5||DL.evtype==8) #leftOnly
+#TH1F Lu1nhit 'L-arm VDC u1 hits' L.vdc.u1.nhit 20 1 20  (DL.evtype==3||DL.evtype==5||DL.evtype==8) #leftOnly
+#TH1F Lu2nhit 'L-arm VDC u2 hits' L.vdc.u2.nhit 20 1 20  (DL.evtype==3||DL.evtype==5||DL.evtype==8)  #leftOnly
+
+# ------------------------------------------------------------------
+# LEFT ARM GAS CHERENKOV  ADC and TDC :
+
+TH1F Lcera 'L-arm Cerenkov ADCs' L.cer.a 250 1 4000 L.cer.a>10&&(DL.evtype==3||DL.evtype==5||DL.evtype==8)
+TH1F Lcert 'L-arm Cerenkov TDCs' L.cer.t 250 0 2500 L.cer.t>0&&(DL.evtype==3||DL.evtype==5||DL.evtype==8)
+TH1F Lcera_p 'L-arm Cerenkov ADCs (PedSub)' L.cer.a_p 250 -10 3999 L.cer.a_p>0&&(DL.evtype==3||DL.evtype==5||DL.evtype==8)
+
+TH1F Lcer_sum  'L-arm Cerenkov sum (corrected)' L.cer.asum_c 200 1 3500  L.cer.asum_c>0&&(DL.evtype==3||DL.evtype==5||DL.evtype==8)
+TH2F Lcer_x  'L-arm Cerenkov sum (corrected) vs. X' L.cer.trx L.cer.asum_c 60 -1.2 1.2 200 200 3500 L.cer.asum_c>0&&L.tr.n>0&&(DL.evtype==3||DL.evtype==5||DL.evtype==8)
+TH2F Lcer_y  'L-arm Cerenkov sum (corrected) vs. Y' L.cer.try L.cer.asum_c 60 -0.12 0.12 200 200 3500 L.cer.asum_c>0&&L.tr.n>0&&(DL.evtype==3||DL.evtype==5||DL.evtype==8)
+
+# ------------------------------------------------------------------
+# LEFT ARM A1 CHERENKOV  ADC and TDC :
+
+#TH1F La1a   'L-arm A1 Cerenkov PMT (Raw)' L.a1.a 1000 1 2000 L.a1.a>0&&(DL.evtype==3||DL.evtype==5||DL.evtype==8)
+#TH1F La1a_c 'L-arm A1 PMT (Corrected)' L.a1.a_c 1000 1 2000 L.a1.a_c>0&&(DL.evtype==3||DL.evtype==5||DL.evtype==8)
+#TH1F La1a_p 'L-arm A1 PMT (PedSub)' L.a1.a_p 1000 -200 2000 L.a1.a>0&&(DL.evtype==3||DL.evtype==5||DL.evtype==8)
+#TH1F La1t   'L-arm A1 Cerenkov TDC (Raw)' L.a1.t 400 0 4100 L.a1.t>0&&(DL.evtype==3||DL.evtype==5||DL.evtype==8)
+
+#TH1F Laero  'L-arm A1 Cerenkov sum (corrected)' L.a1.asum_c 8000 1 8000 L.a1.asum_c>0&&(DL.evtype==3||DL.evtype==5||DL.evtype==8)
+#TH1F Laerop 'L-arm A1 Cerenkov sum' L.a1.asum_p 8000 1 8000 L.a1.asum_p>0&&(DL.evtype==3||DL.evtype==5||DL.evtype==8)
+
+#TH1F La1sum  'L-arm Aero Cerenkov sum (corrected)' L.a1.asum_c 200 1 2500  L.a1.asum_c>0&&(DL.evtype==3||DL.evtype==5||DL.evtype==8)
+#TH2F La1_x  'L-arm Aero Cerenkov sum (corrected) vs. X' L.a1.trx L.a1.asum_c 60 -1.2 1.2 200 1 3500 L.a1.asum_c>0&&L.tr.n>0&&(DL.evtype==3||DL.evtype==5||DL.evtype==8)
+#TH2F La1_y  'L-arm Aero Cerenkov sum (corrected) vs. Y' L.a1.try L.a1.asum_c 60 -0.12 0.12 200 1 3500 L.a1.asum_c>0&&L.tr.n>0&&(DL.evtype==3||DL.evtype==5||DL.evtype==8)
+
+#TH2F Ls1s3  'Left s2 vs s1' L.s2.ra_p L.s1.ra_p 400 0 4096 400 0 4096
+
+TH1F Ltr  'L-arm beta' L.tr.beta 60 -0.2 0.6
+
+# ------------------------------------------------------------------
+# LEFT ARM Pion Rejector 1/2 (Preshower/Shower):
+TH1F Lpsa   'PionRejector1 ADCs' L.prl1.a 1100 1 4100 L.prl1.a>0.&&(DL.evtype==3||DL.evtype==5||DL.evtype==8) 
+
+TH1F Lpsa_p 'PionRejector1 ADCs (PedSub)' L.prl1.a_p 500 -10 3100 L.prl1.a_p>0.&&(DL.evtype==3||DL.evtype==5||DL.evtype==8)
+TH1F Lpsa_c 'PionRejector1 ADCs (Corrected)' L.prl1.a_c 200 -100 4000 L.prl1.a_c>0.&&(DL.evtype==3||DL.evtype==5||DL.evtype==8)
+TH1F Lpssum  'PionRejector1 sum' L.prl1.asum_c 200 1 1000 
+
+TH1F Lsha   'PionRejector2 ADCs' L.prl2.a 1100 1 4100 L.prl2.a>0.&&(DL.evtype==3||DL.evtype==5||DL.evtype==8) 
+TH1F Lsha_p 'PionRejector2 ADCs (PedSub)' L.prl2.a_p 500 -10 3100 L.prl2.a_p>0.&&(DL.evtype==3||DL.evtype==5||DL.evtype==8)
+TH1F Lsha_c 'PionRejector2 ADCs (Corrected)' L.prl2.a_c 200 -100 4000 L.prl2.a_c>0.&&(DL.evtype==3||DL.evtype==5||DL.evtype==8)
+TH1F Lshsum  'PionRejector2 sum' L.prl2.asum_c 200 1 1000
+
+
+TH2F Lpr1_2 'Pion Rejector_1 sum vs. PR_2 sum' L.prl2.asum_c L.prl1.asum_c 200 1 10000 200 1 10000 
+TH2F Lpr1sumx 'Pion Rejector_1 sum vs. x' L.prl1.x L.prl1.asum_c 200 -1.2 1.2 200 1 10000 
+TH2F Lpr1sumy 'Pion Rejector_1 sum vs. y' L.prl1.y L.prl1.asum_c 200 -1.2 1.2 200 1 10000 
+TH2F Lpr2sumx 'Pion Rejector_2 sum vs. x' L.prl2.x L.prl2.asum_c 200 -1.2 1.2 200 1 10000 
+TH2F Lpr2sumy 'Pion Rejector_2 sum vs. y' L.prl2.y L.prl2.asum_c 200 -1.2 1.2 200 1 10000 
+
+TH2F Lshe_pse  	'L-arm Pion Rej.2 energy vs. Pion Rej.1 energy' L.prl2.e L.prl1.e 200 1 4000 200 1 2400 L.prl2.asum_c>0&&L.prl1.asum_c>0&&(DL.evtype==3||DL.evtype==5||DL.evtype==8)
+
+# problem in E/p -- why are we dividing by 2350? We should be dividing by 1000 to convert to GeV.  
+# Also corrected the ExTgtCor_L variable [dp->p].  Formula for prl_E_P updated. 
+#formula    prl_E_P  (L.prl1.e+L.prl2.e)/(2350*(1.+ExTgtCor_L.dp))
+formula    prl_E_P  (L.prl1.e+L.prl2.e)/(1000*ExTgtCor_L.p)
+TH1F prlep 'Pion Rejector Total Energy Divided by Momentum' prl_E_P 500 0.0 1.5 L.tr.n==1&&L.prl1.e>0.&&L.prl2.e>0.
+
+
+begin scalers left
+   default
+#   default_helicity
+# triggers
+   T1cnt 4 0 counts
+   T2cnt 4 1 counts
+   T3cnt 4 2 counts
+   T4cnt 4 3 counts
+   T5cnt 4 4 counts	
+   T6cnt 4 5 counts
+   T7cnt 4 6 counts
+   Tacc_cnt 4 12 counts
+# triggers gated by helicity
+   P_T1cnt 3 0 counts
+   P_T2cnt 3 1 counts
+   P_T3cnt 3 2 counts
+   P_T4cnt 3 3 counts
+   P_T5cnt 3 4 counts	
+   P_T6cnt 3 5 counts
+   P_T7cnt 3 6 counts
+   P_Tacc_cnt 3 12 counts
+   M_T1cnt 5 0 counts
+   M_T2cnt 5 1 counts
+   M_T3cnt 5 2 counts
+   M_T4cnt 5 3 counts
+   M_T5cnt 5 4 counts	
+   M_T6cnt 5 5 counts
+   M_T7cnt 5 6 counts
+   M_Tacc_cnt 5 12 counts
+# 1024 Hz clock
+   clkcount 4 7 counts
+   P_clkcount 3 7 counts
+   M_clkcount 5 7 counts
+# counts in BCM scaler
+   bcmu1cnt 4 13 counts
+   bcmu3cnt 4 16 counts
+   bcmu10cnt 4 8 counts
+   bcmd1cnt 4 15 counts
+   bcmd3cnt 4 10 counts
+   bcmd10cnt 4 11 counts
+# counts in BCM scaler gated by helicity
+   P_bcmu1cnt 3 13 counts
+   P_bcmu3cnt 3 16 counts
+   P_bcmu10cnt 3 8 counts
+   P_bcmd1cnt 3 15 counts
+   P_bcmd3cnt 3 10 counts
+   P_bcmd10cnt 3 11 counts
+   M_bcmu1cnt 5 13 counts
+   M_bcmu3cnt 5 16 counts
+   M_bcmu10cnt 5 8 counts
+   M_bcmd1cnt 5 15 counts
+   M_bcmd3cnt 5 10 counts
+   M_bcmd10cnt 5 11 counts
+end scalers
+
+##########################################
+# RICH detector section
+##########################################
+#block L.rich.*
+
+#TH1F Lrichhitadc 'L-arm RICH Detector hit adc' L.rich.hit.adc 150 20 300 
+#TH1F Lrichmipangles 'L-arm RICH Detector mip pion angle' L.rich.mip.angles[0] 400 0.55 0.75 
+#TH1F Lrichmipnphot 'L-arm RICH Detector number photons' L.rich.mip.nphot[0] 100 0.1 24 
+#TH1F Lrichhiti 'L-arm RICH Detector hit i' L.rich.hit.i 100 0 240
+#TH1F Lrichhitj 'L-arm RICH Detector hit j' L.rich.hit.j 100 0 80 
+#TH1F Lrichclusx 'L-arm RICH Detector clus x' L.rich.clus.x 100 0 2400
+
+#TH1F Lrichclusy 'L-arm RICH Detector clus y' L.rich.clus.y 100 0 750 
+
+#TH2F Lrichclusxclusy 'L-arm RICH Detector clusx vs clusy' L.rich.clus.y L.rich.clus.x 100 0 750 100 0 2400 
+#TH2F Lrichhitxhity 'L-arm RICH Detector hitx vs hity' L.rich.hit.y L.rich.hit.x 100 0 750 100 0 2400 
+#TH2F Lrichmipxtrackx 'L-arm RICH Detector mipx vs tracky' L.rich.mip.x L.rich.track.x 100 0 2300 100 0 2300
+#TH2F Lrichmipytracky 'L-arm RICH Detector mipy vs tracky' L.rich.mip.y L.rich.track.y 100 0 750 100 0 750
+#TH2F Lrichmipxmipy 'L-arm RICH Detector mipx vs mipy' L.rich.mip.y L.rich.mip.x 170 0 680 550 0 2200
+#TH2F Lrichclusxclusy 'L-arm RICH Detector clusx vs clusy' L.rich.clus.y L.rich.clus.x 170 0 680 550 0 2200
+
+#TH2F Lrichhitihitj 'L-arm RICH Detector hiti vs hitj' L.rich.hit.j L.rich.hit.i 80 -0.5 79.5 240 -0.5 239.5
+
+# TH2F LrichhitxhityTest 'asdfasdf' L.rich.hit.y L.rich.hit.x 100 0 2400 100 0 2500
+# TH2F LrichhitxhityTest2 'asdfasasdfdf' L.rich.hit.i L.rich.hit.x 100 0 240 100 0 2500
+# TH2F LRICHring1 'L-arm RICHring1' L.rich.clus.y-L.rich.mip.y  L.rich.clus.x-L.rich.mip.x  100 -600 600 100 -600 600 (DL.evtype==5||DL.evtype==3)&&abs(L.rich.track.x-1000.)<1200.&&abs(L.rich.track.y-400)<450.&&L.rich.hit.size>0
+
+# TH2F LRICHring2 'L-arm RICHring2' L.rich.clus.y-L.rich.mip.y  L.rich.clus.x-L.rich.mip.x  100 -600 600 100 -600 600 (DL.evtype==5||DL.evtype==3)&&abs(L.rich.track.x-1000.)<1200.&&abs(L.rich.track.y-400)<450.&&L.rich.hit.size>0

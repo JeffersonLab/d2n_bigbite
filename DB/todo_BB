@@ -1,0 +1,51 @@
+**********************************************************************************************************
+Posik Sept. 22 2009
+**********************************************************************************************************
+
+ Below is a list of things that still need to be completed for the d2n database:
+------------------------------------------------------------------------------------------------------------
+
+* Need to implement Xin's script (StartType.pl) which has the analyzer look at the time stamp on each run, which will allow for midday changes.
+     -Using Xin's script will require a .txt file (filetime) that contains run number and time stamp for each run that needs
+      to be analyzed in the following format:
+
+                 run# YYYYMMDD hh:mm:ss
+
+* The Bigbite preshower and shower need to be calibrated using 1 and 2 pass Elastic data.
+
+* BigBite Cerenkov one photopeaks may need a little fine tuning.
+
+* Need to find some BigBite LED runs for early Feb 2009 inorder to calibrate the 1 photo peak (can't seem to find any). 
+
+* Need to modify THaCherenkov class to handle  multihit TDCs
+
+* Need to set BigBite Cerenkov TDC offset coefficients
+
+* replay_phys_BB.C script is almost in working condition, may be some problems with the .cdef file.
+
+* Need to get a BigBite scalar replay running
+
+* BigBite MWDC detector changes and Optic calibrations need to be included 
+
+**********************************************************************************************************
+Posik Sept. 29 2009
+**********************************************************************************************************
+
+ Below is a list of things that still need to be completed for the d2n database:
+------------------------------------------------------------------------------------------------------------
+
+* The Bigbite preshower and shower need to be calibrated using 1 and 2 pass Elastic data.
+
+* BigBite Cerenkov one photopeaks may need a little fine tuning.
+
+* Need to find some BigBite LED runs for early Feb 2009 inorder to calibrate the 1 photo peak (can't seem to find any). 
+
+* Need to modify THaCherenkov class to handle  multihit TDCs
+
+* Need to set BigBite Cerenkov TDC offset coefficients
+
+* replay_phys_BB.C script is almost in working condition, may be some problems with the .cdef file.
+
+* Need to get a BigBite scalar replay running
+
+* BigBite MWDC detector changes and Optic calibrations need to be included  

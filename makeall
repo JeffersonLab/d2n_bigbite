@@ -1,0 +1,36 @@
+#!/usr/bin/perl -w
+$BaseDir = `pwd`;
+chomp($BaseDir);
+
+$MakeOption = " ";
+if (scalar(@ARGV)>=1){
+    $MakeOption = $ARGV[0];
+}
+
+print "==================================================\n";
+print "> compiling bigbitelib with option '$MakeOption'\n";
+chdir("$BaseDir/bigbitelib");
+system("make -j4 $MakeOption");
+
+print "==================================================\n";
+print "> compiling BBNormAna with option '$MakeOption'\n";
+chdir("$BaseDir/BBNormAna");
+system("make -j4 $MakeOption");
+
+print "==================================================\n";
+print "> compiling RICHlib with option '$MakeOption'\n";
+chdir("$BaseDir/RICHlib");
+system("make -j4 $MakeOption");
+
+print "==================================================\n";
+print "> building link/dir for replay\n";
+chdir("$BaseDir/replay");
+system("ln -svf ../bigbitelib/*.so ./");
+system("ln -svf ../BBNormAna/*.so ./");
+system("ln -svf ../RICHlib/*.so ./");
+
+#system("mkdir -v ROOTfiles");
+#system("mkdir -v ScratchROOTfiles");
+#system("mkdir -v summaryfiles");
+
+# print `pwd`;

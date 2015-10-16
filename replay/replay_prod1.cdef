@@ -1,0 +1,13 @@
+
+
+Block: RawDecode
+
+#RawDecode_master  true
+
+
+Block: Decode
+
+#Decode_master  true
+
+Block: Physics
+Physics_master (abs(ReactPt_L.z)<.25&&!DL.edtpl&&L.tr.n>0&&L.prl1.asum_c>0.&&L.prl2.asum_c>0&&abs(ExTgtCor_L.dp)<0.05)||(BB.tr.n>=1&&!DL.edtpl&&abs(BB.tr.vz)<0.2 &&BB.optics.charge<0&&BB.ts.ps.e>0&&BB.ts.sh.e>0)

@@ -1,0 +1,348 @@
+# ----------------------------------------------------------------
+# Transversity Physics Replay Output Configuration File
+# Author : Jin Huang <jinhuang@jlab.org> 
+# ----------------------------------------------------------------
+#
+#
+# Analyzer output definition file used by THaOutput class.
+# See  http://hallaweb.jlab.org/root/THaOutput.html
+# R. Michaels, June 2003
+# Comments start with '# '  (careful, need a space after #) 
+#
+# There are at present 3 places where output is defined
+# in the C++ analyzer, and this is one of them.
+# The other two are THaRun (run-dependent info) and
+# THaEvent (event-dependent info), which provide quantities 
+# like run number and event number that you always need.
+# In this place, the "outdef" file, one can define
+# global variables, formulas, and histograms, as well
+# as cuts on histograms.  The results of the formulas appear 
+# in the tree with the formula-name given.
+#
+# Syntax of file  -- by example:
+#
+# variable   L.vdc.u2.nclust
+# variable   R.s1.lt
+# formula    targetX  1.464*BB.bpm4b.x-0.464*BB.bpm4a.x
+# TH1F  rv1n  'R-arm vdc hits on V1'   R.vdc.v1.nhit 100 0 10
+# TH1F  rv1w  'R-arm vdc wiremap on V1'  R.vdc.v1.wire 100 0 500
+# TH1F  tgtx  'Target X position'  targetX 100 -2 2 
+# TH2F  t12  'Time stamps on roc1 vs roc2'  D.timeroc1  D.timeroc2
+#       100 0 1000 100 0 1000
+# TH1F  Rv1n 'R-arm VDC nhit (cut)' R.vdc.v1.nhit 100 0 10 R.vdc.v1.nhit>3
+# (note, the cut R.vdc.v1.nhit appears optionally at the end, also
+#  this variable cannot be a variable-sized array)
+#
+#
+# The lines are of the form
+#     keyword  rest-of-line
+#
+# where the keywords are as follows :
+# (the keywords are case-insensitive, the rest of the line is not)
+#
+#  VARIABLE  -- indicates that a global variable is to
+#              be added to the tree.  
+#              The next string is the name of the variable.  
+#              You can see a list of variables by typing 
+#              gHaVars->Print() at the analyzer's root shell prompt.
+#              A variable can also be an array, e.g. R.s1.lt  
+#              Then the values in the tree will be R.s1.lt.data[0], 
+#              R.s1.lt.data[1], etc, up to the array size which
+#              is Ndata.R.s1.lt
+# 
+#  BLOCK   --  An entire block of variables are written to the
+#              output.  E.g. "L.*" writes all Left HRS variables.
+#
+#  FORMULA -- indicates a THaFormula to add to the output.
+#             The next word will be the "name" of the formula result 
+#             in the tree. The 3rd string is the formula to evaluate.  
+#             Note, it cannot have spaces in it.
+#             Formulas can be vectors if the arrays are fixed size.
+#
+#  CUT --     Like a formula, but the data are 0 (false) or 1 (true)
+#
+#  TH1F, TH2F, TH1D, TH2D  -- defines histograms (1D or 2D).
+#              The next word is the name of the object.
+#              The following string (must be in single quotes) is  
+#              the title of the histogram.  Next, the variables
+#              or formulas names that are put into the histogram 
+#              are listed together with bin info: nbin, xlo, xhi and if 2D
+#              the same bin info for y.  Optional cuts can be specified 
+#              at the end of the line.  See examples below.  
+#
+# ------------------------------------
+
+# List of the variable blocks to be written out
+
+block BB.optics.charge
+block BB.optics.eloss
+block BB.optics.n
+block BB.tr.*
+
+block BB.s.*hit*
+block BB.s.tr*
+
+block BB.sum.*hit*
+block BB.sum.tr*
+
+block BB.ts.*.nclust
+block BB.ts.*.e*
+block BB.ts.*.x
+block BB.ts.*.y
+block BB.ts.*.*blk
+block BB.ts.*.mult
+
+block L.tr.* 
+block ReactPt_L.* 
+block ExTgtCor_L.*
+
+block L.s2.* 
+block L.cer.*sum*
+block L.a1.*sum*
+
+block L.prl1.*sum*
+block L.prl1.e
+
+block L.prl2.*sum*
+block L.prl2.e
+
+block PriKine.*
+block SecKinePion.*
+
+block adchel.L.helicity
+block adchel2.L.helicity
+block g0hel.L.helicity
+
+block he3.Spin
+
+block urb.*
+
+block DL.*
+
+
+# ------------------------------------------------
+# Scalars
+# ------------------------------------------------
+# "evleft" = ROC11 data
+# Do not use "default" for transversity
+
+begin scalers evleft
+# counts in triggers, BCM, etc
+  t1c 1 0 counts
+  t2c 1 1 counts
+  t3c 1 2 counts
+  t4c 1 3 counts
+  t5c 1 4 counts
+  t6c 1 5 counts  
+  t7c 1 6 counts 
+  clkc 1 7 counts
+  l1ac 1 12 counts
+  u1c 1 13 counts
+  u3c 1 16 counts
+  u10c 1 8 counts
+  d1c 1 15 counts
+  d3c 1 10 counts
+  d10c 1 11 counts
+  fclkc 1 28 counts
+# rates
+  t1r  1 0  
+  t2r  1 1  
+  t3r  1 2  
+  t4r  1 3  
+  t5r  1 4  
+  t6r  1 5  
+  t7r  1 6  
+  clk  1 7
+  u1r  1 13  
+  u3r  1 16  
+  u10r 1 8  
+  d1r  1 15  
+  d3r  1 10  
+  d10r 1 11  
+  l1ar 1 12 
+# target and helicity combinations (slots 2,3,...)
+  clkpp 2 7 counts
+  clkpm 4 7 counts
+  clkmp 3 7 counts
+  clkmm 5 7 counts
+  
+  l1app 2 12 counts
+  l1apm 4 12 counts
+  l1amp 3 12 counts
+  l1amm 5 12 counts
+  
+  fclkpp 2 28 counts
+  fclkpm 4 28 counts
+  fclkmp 3 28 counts
+  fclkmm 5 28 counts
+  
+  u1pp 2 13 counts
+  u1pm 4 13 counts
+  u1mp 3 13 counts
+  u1mm 5 13 counts
+
+  u3pp 2 16 counts
+  u3pm 4 16 counts
+  u3mp 3 16 counts
+  u3mm 5 16 counts
+
+  u10pp 2 8 counts
+  u10pm 4 8 counts
+  u10mp 3 8 counts
+  u10mm 5 8 counts
+  
+  d1pp 2 15 counts
+  d1pm 4 15 counts
+  d1mp 3 15 counts
+  d1mm 5 15 counts
+  
+  d3pp 2 25 counts
+  d3pm 4 10 counts
+  d3mp 3 10 counts
+  d3mm 5 10 counts
+  
+  d10pp 2 11 counts
+  d10pm 4 11 counts
+  d10mp 3 11 counts
+  d10mm 5 11 counts
+  
+  
+  t1pp 2 0 counts
+  t1pm 4 0 counts
+  t1mp 3 0 counts
+  t1mm 5 0 counts
+  
+  t3pp 2 2 counts
+  t3pm 4 2 counts
+  t3mp 3 2 counts
+  t3mm 5 2 counts
+  
+  t5pp 2 4 counts
+  t5pm 4 4 counts
+  t5mp 3 4 counts
+  t5mm 5 4 counts
+  
+  t6pp 2 5 counts
+  t6pm 4 5 counts
+  t6mp 3 5 counts
+  t6mm 5 5 counts
+# etc ... have fun
+end scalers
+
+
+# "evbbite" = ROC12 data
+begin scalers evbbite
+  t1c 4 0 counts
+  t2c 4 1 counts
+  t3c 4 2 counts
+  t4c 4 3 counts
+  t5c 4 4 counts
+  t6c 4 5 counts
+  t7c 4 6 counts
+  clkc 4 7 counts
+  l1ac 4 8 counts
+  fclkc 4 11 counts
+  f1rftime1c 4 12 counts
+  f1rftime2c 4 13 counts
+  u1c 4 16 counts
+  u3c 4 17 counts
+  u10c 4 18 counts
+  d1c 4 19 counts
+  d3c 4 20 counts
+  d10c 4 21 counts
+# These are rates
+  t1r 4 0  
+  t2r 4 1  
+  t3r 4 2  
+  t4r 4 3  
+  t5r 4 4  
+  t6r 4 5  
+  t7r 4 6  
+  clk 4 7
+  l1ar 4 8 
+  f1rftime1 4 12 
+  f1rftime2 4 13 
+  u1r 4 16 
+  u3r 4 17 
+  u10r 4 18  
+  d1r 4 19 
+  d3r 4 20  
+  d10r 4 21 
+# target and helicity combinations 
+  clkpp 5 7 counts
+  clkpm 7 7 counts
+  clkmp 6 7 counts
+  clkmm 8 7 counts
+
+  l1app 5 8 counts
+  l1apm 7 8 counts
+  l1amp 6 8 counts
+  l1amm 8 8 counts
+  
+  fclkpp 5 11 counts
+  fclkpm 7 11 counts
+  fclkmp 6 11 counts
+  fclkmm 8 11 counts
+  
+  u1pp 5 16 counts
+  u1pm 7 16 counts
+  u1mp 6 16 counts
+  u1mm 8 16 counts
+
+  u3pp 5 17 counts
+  u3pm 7 17 counts
+  u3mp 6 17 counts
+  u3mm 8 17 counts
+
+  u10pp 5 18 counts
+  u10pm 7 18 counts
+  u10mp 6 18 counts
+  u10mm 8 18 counts
+  
+  d1pp 5 19 counts
+  d1pm 7 19 counts
+  d1mp 6 19 counts
+  d1mm 8 19 counts
+
+  d3pp 5 20 counts
+  d3pm 7 20 counts
+  d3mp 6 20 counts
+  d3mm 8 20 counts
+
+  d10pp 5 21 counts
+  d10pm 7 21 counts
+  d10mp 6 21 counts
+  d10mm 8 21 counts
+  
+  t1pp 5 0 counts
+  t1pm 7 0 counts
+  t1mp 6 0 counts
+  t1mm 8 0 counts
+  
+  t3pp 5 2 counts
+  t3pm 7 2 counts
+  t3mp 6 2 counts
+  t3mm 8 2 counts
+  
+  t5pp 5 4 counts
+  t5pm 7 4 counts
+  t5mp 6 4 counts
+  t5mm 8 4 counts
+  
+  t6pp 5 5 counts
+  t6pm 7 5 counts
+  t6mp 6 5 counts
+  t6mm 8 5 counts
+ 
+end scalers
+
+begin epics
+   HALLA:p
+   HALLA:dpp
+   IPM1H04A.XPOS
+   IPM1H04A.YPOS
+   IPM1H04B.XPOS
+   IPM1H04B.YPOS
+   hac_bcm_average
+end epics
+

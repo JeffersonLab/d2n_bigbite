@@ -1,0 +1,14 @@
+*********************************************************************************************
+Posik (Sept. 29 2009)
+
+*********************************************************************************************
+
+-StarType.pl script needs to be put in the replay directory so that the analyzer can pick up the altered .dat files
+
+-StartType.pl script needs to be changed( line 9) to point to filetime_d2n
+
+
+
+
+
+

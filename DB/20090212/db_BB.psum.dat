@@ -1,0 +1,271 @@
+######################### SCINTILLATOR PLANE 1 ############################
+Number of Scintillator paddles ------------------------------------------
+       26
+Crate,Slot,1st,Last ADC chans,Beg S1 chan --------------------------------------
+        8      02      32      57       1             - ADCs pads 1-26  (right)
+        8      02      32      57       27            - ADCs pads 1-26  (left)
+        8      16      54      79       1             - TDCs pads 1-26  (right)
+        8      16      54      79       27            - TDCs pads 1-26  (left)
+      -1        0       0       0       0
+X,Y,Z coords of S1 front plane in spectrom cs ----------------------------------
+   -0.129     0.0   1.2873                           - Meters
+Half of X, half of Y, full Z sizes of S1 ---------------------------------------
+    0.88    0.18     0.005                           - Meters
+Rotation angle of the S1 plane -------------------------------------------------
+     0.0                                             - Degrees
+TDC time offsets of S1 TDC channels --------------------------------------------
+  0.00 0.00 0.00 0.00 0.00 0.00 0.00 0.00 0.00 0.00 0.00 0.00 0.00
+  0.00 0.00 0.00 0.00 0.00 0.00 0.00 0.00 0.00 0.00 0.00 0.00 0.00 - Left Paddles
+  0.00 0.00 0.00 0.00 0.00 0.00 0.00 0.00 0.00 0.00 0.00 0.00 0.00
+  0.00 0.00 0.00 0.00 0.00 0.00 0.00 0.00 0.00 0.00 0.00 0.00 0.00 - Right Paddles
+Pedestal values of S1 ADC channels ---------------------------------------------
+ 485.7  450.6  363.6  402.2  529.0  364.7  367.2  400.3  457.5  520.5  465.6
+ 330.7  472.1  531.2  481.0  370.5  492.8  341.1  405.8  489.6  536.4  461.5  
+ 543.5  374.0  464.0  305.4 - Left Paddles
+ 485.7  450.6  363.6  402.2  529.0  364.7  367.2  400.3  457.5  520.5  465.6
+ 330.7  472.1  531.2  481.0  370.5  492.8  341.1  405.8  489.6  536.4  461.5  
+ 543.5  374.0  464.0  305.4 - Right Paddles
+Amplitude transformation coefficients of S1 ADC channels -----------------------
+  1.00 1.00 1.00 1.00 1.00 1.00 1.00 1.00 1.00 1.00 1.00 1.00 1.00
+  1.00 1.00 1.00 1.00 1.00 1.00 1.00 1.00 1.00 1.00 1.00 1.00 1.00 - Left Paddles
+  1.00 1.00 1.00 1.00 1.00 1.00 1.00 1.00 1.00 1.00 1.00 1.00 1.00
+  1.00 1.00 1.00 1.00 1.00 1.00 1.00 1.00 1.00 1.00 1.00 1.00 1.00 - Right Paddles
+################################################################################
+
+===================== spliter of old and new database format ============================
+
+###############################################################
+#
+# Data Base for THaScintPlaneDet
+#
+# units: m & ns
+#
+# Author: Jin Huang <mailto:jinhuang@jlab.org>    Sept 2008
+#
+###############################################################
+
+
+###############################################################
+# Example
+###############################################################
+# comment line start with '#' or empty line
+# WARNING: "empty line" means completely empty, even with out 
+#   space or tab
+#
+# example section for Bigbite trigger plane dE subdetector TDC cratemap
+#
+[ BB.sum.cratemap.tdc.example ]
+#
+# reference channel goes first
+# crate	slot	lo	hi	model	refindex
+25      13      32     32     6401    -1
+# crate=-1 end to this subsection
+-1       0       0      0        0     0
+#
+# subsection for the left PMTs
+# crate	slot	lo	hi	model	refindex
+25       1       0      0     6401     0
+25       1       0      0     6401     0
+25      12      32     32     6401     0
+# lines ignored here	
+-1       0       0      0        0     0
+#
+# subsection for the right PMTs
+# crate	slot	lo	hi	model	refindex
+25       1       0      0     6401     0
+25       1       0      0     6401     0
+25       4      31     31     6401     0
+# lines ignored here
+-1       0       0      0        0     0
+
+[ BB.sum.left_pedestals.example ]
+# first and last index in array
+0 30
+# no comment in table
+# Table start here
+  0   0 397 423 464 
+487 496 576 522 335 
+361 433 347 648 512 
+609 529 451 537 540 
+496 554 385 382 294 
+376 403 331 335 230 
+288 
+
+
+###############################################################
+# Bigbite Timing Scintilator plane
+###############################################################
+[ BB.psum.geometry ]
+# TERMINOLOGY follows conventions of Hall A Tech Notes JLAB-TN-02-012:  
+# http://hallaweb.jlab.org/publications/Technotes/files/2002/02-012.pdf
+# origin of the detector
+# relative to Transport Coordinate System 
+#   x   y   z
+    -0.129 0	1.2873
+
+# x and y axis of the detector
+# relative to Transport Coordinate System
+# z axis will be calculated by z=x cross y
+# x axis
+#   x   y   z
+    1   0   0
+# y axis
+#   x   y   z
+    0   1   0
+
+[ BB.psum.hit_acceptance ]
+# limits of accepatble x and y diffence between hit 
+# and track projection on the plane
+#	dx	    dy
+	.3    .30
+	
+	
+[ BB.psum.cratemap.tdc ]
+# Ref Idx:index for reference channel
+# crate	slot	Lo	Hi	Model	Ref Idx.
+5	5	16	16	3201	-1
+-1	0	0	0	0	0
+# left PMTs				
+5	9	6	15	3201	0
+5	11	0	15	3201	0
+-1	0	0	0	0	0
+# right PMTs				
+5	9	6	15	3201	0
+5	11	0	15	3201	0
+-1	0	0	0	0	0
+
+
+
+[ BB.psum.cratemap.adc ]
+# crate	slot	Lo	Hi	Model
+# left 24 PMT
+8	2	32	57	1881	
+-1	0	0	0	0
+# right 24 PMT
+8	2	32	57	1881	
+-1	0	0	0	0
+ 
+
+ 
+[ BB.psum.calib ]
+# -----------------------------------------------------------------------
+# first and last index of reference channel with same time resorlution
+# ex. 0 1 stand for 2 reference channel with index 0 & 1
+0 0
+# TDC resorlution of above reference channels
+0.0602
+# if necessary, continue this list untill reach nRefCh-1
+# -----------------------------------------------------------------------
+# first and last index of bars with same specification
+0 25
+
+# middle of the first bar, relative to the center of the detector it belongs to
+# x,y,z,of first bar and dx,dy,dz between bars
+0.84615   0.0   .0   -6.769e-02   0.   0. 
+
+# full width (from end to end)
+# xw,yw,zw
+-6.769e-02   0.18   .005   
+
+# effective speed of light(m/ns) and attenuation in scintillator
+# attenuation: Y_ADC = TMath::Log(L_ADC/R_ADC)*attenuation/2.0;
+0.146   1.e8
+# n=1.58, taking reflection into consideration, I just set c=1^8 m/s temporarily 
+# I do not know attenuation, probably it's not useful
+
+# (default value of) gain, ped, res, toff, walk, lowtdclim, uptdclim, wrapa
+#
+# gain, ped: fAmplPedCor = fRawAmpl - pmt->GetPed();
+#            fAmpl = fAmplPedCor * pmt->GetGain();
+# res, toff: fTime = fRawTime * res - toff
+# walk:      time-walk correction, t=t-walk*pow(adc,-0.5)
+# lowtdclim, uptdclim: Lower and upper boundary
+# for an acceptable hit
+# wrapa:     F1TDC wrap-round time (in Rawtime format)
+#
+# left PMT
+# gain, ped, res, toff, walk, lowtdclim, uptdclim, wrapa
+1.	0	0.0602	0.0	0.0	-9000	9000	65253
+# right PMT
+# gain, ped, res, toff, walk, lowtdclim, uptdclim, wrapa
+1.	0	0.0602	0.0	0.0	-9000	9000	65253
+# -----------------------------------------------------------------------
+
+[ BB.psum.left_gain ]
+# first and last index in array
+0 25
+# Table start here
+1	1	1	1
+1	1	1	1
+1	1	1	1
+1
+1	1	1	1
+1	1	1	1
+1	1	1	1
+1	
+
+[ BB.psum.left_pedestals ]
+# first and last index in array
+0 25
+# Table start here
+ 494.4  461.9  376.7  415.2  543.5  380.5  386.7  419.5  475.0  532.4  478.5
+ 347.2  493.9  548.5  497.2  387.0  511.9  358.2  422.7  506.4  554.8  478.3
+ 559.0  389.0  480.5  322.0
+ 
+[ BB.psum.left_toff ]
+# toff should contain correction for 
+# the time of light traveling through bars
+#
+# first and last index in array
+0 25
+# Table start here
+0 0 0 0
+0 0 0 0
+0 0 0 0
+0 0 0 0
+0 0 0 0
+0 0 0 0
+0 0
+
+
+
+[ BB.psum.right_gain ]
+# first and last index in array
+0 25
+# Table start here
+1	1	1	1
+1	1	1	1
+1	1	1	1
+1
+1	1	1	1
+1	1	1	1
+1	1	1	1
+1	
+	
+
+[ BB.psum.right_pedestals ]
+# first and last index in array
+0 25
+# Table start here
+ 494.4  461.9  376.7  415.2  543.5  380.5  386.7  419.5  475.0  532.4  478.5
+ 347.2  493.9  548.5  497.2  387.0  511.9  358.2  422.7  506.4  554.8  478.3
+ 559.0  389.0  480.5  322.0
+ 
+[ BB.psum.right_toff ]
+# first and last index in array
+0 25
+# Table start here
+0 0 0 0
+0 0 0 0
+0 0 0 0
+0 0 0 0
+0 0 0 0
+0 0 0 0
+0 0
+
+[BB.psum.WarningThreshold]
+# Threshold of ave. error reference per event that will pop up warnings
+0.006
+
+
+

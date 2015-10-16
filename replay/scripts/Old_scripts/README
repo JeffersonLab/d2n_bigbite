@@ -1,0 +1,38 @@
+Please view Hall A WIKI page
+
+---------------------------------------------------------------------
+https://hallaweb.jlab.org/wiki/index.php/Transversity/Online_Replay
+---------------------------------------------------------------------
+
+-----------------------------
+Quick Start for Shift Workers
+-----------------------------
+
+Replay procedures are: 
+
+logon to adaq@adaql<3-7>(DO NOT do it on adal1&adal2 which are taking the data), call command "goonlana", then start "analyzer". 
+
+After analyzer is loaded successfully, one can call 
+
+>replay_BB(runno)
+for BigBite replay or 
+
+>replay_phys(runnno)
+for physics replay. 
+
+(and more, see wiki)
+
+It's also possible to specify the run# and event number in parameters. For ex. 
+
+>replay_BB(1568,1000)
+will replay first 1k events of run#1568. 
+
+Then open onlineGUI to check the replay results: 
+
+>online("BB",runno)       for BigBite replay,
+>online("physics",runno)  for physics relay.
+
+
+Or, one can do all the above together by: 
+>do_all(runno)
+which will run all the replays and shows the onlineGUI after the replay. 

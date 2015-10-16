@@ -1,0 +1,16 @@
+#!/bin/bash
+
+localROOT=/data1/${USER}
+
+ln -s "$localROOT" localROOT
+
+ln -s /data1/raw_data raw
+
+for f in ../RICHlib/libRICH.so ../bigbitelib/libBigBite.so ../BBNormAna/libBBNormAna.so; do
+  ln -s $f .
+done
+
+for f in summaryfiles ScratchROOTfiles ROOTfiles; do
+  ln -s $localROOT/$f .
+done
+

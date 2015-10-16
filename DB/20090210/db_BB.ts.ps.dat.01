@@ -1,0 +1,47 @@
+############################## RIGHT PRESHOWER DETECTOR ######################
+Number of columns (x-stripes) and rows (y-stripes)
+      2      27
+Crate, Slot, First, Last ADC channels of blocks
+        8      01      32      47   -
+        8      01      48      58   -
+        8      02       0      15   -
+        8      02      16      26   -
+       -1       0       0       0   -
+Translation table from ADC hardware channel to logical channel number
+   1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16  
+   17 18 19 20 21 22 23 24 25 26 27
+   28 29 30 31 32 33 34 35 36 37 38 39 40 41 42 43
+   44 45 46 47 48 49 50 51 52 53 54
+X,Y,Z coords (in cm) of Preshower front plane in spectrom cs
+    -0.015     0.0    0.97                        - Meters
+Half of X, half of Y, full Z sizes (in Meters) of Preshower
+    1.1475  0.34   0.085                          - Meters
+Rotation angle of the Preshower plane
+    0.0                                           - Degrees
+x,y position of the center of block 1
+    1.105  -0.175                                 - Meters
+dx and dy block spacing
+   -0.085   0.34                                 - Meters
+Energy threshold for clusters to be considered
+    10.                                           - MeV
+Maximum number of clusters to be considered
+    16                                            - blocks
+[ config=okay ]
+ADC pedestals
+337.0  329.0  313.0  321.0  419.0  419.0  429.0  440.0  366.0  
+340.0  328.0  330.0  484.0  417.0  351.0  409.0  371.0  303.0  
+244.0  300.0  399.0  443.0  415.0  471.0  395.0  376.0  299.0  
+337.0  383.0  455.0  323.0  451.0  377.0  621.0  418.0  540.0  
+432.0  482.0  307.0  533.0  559.0  482.0  414.0  449.0  405.0  
+441.0  298.0  669.0  653.0  567.0  471.0  550.0  319.0  385.0  
+Energy calibration coefficients
+0.656186 0.702330 0.733695 0.772365 0.811609 0.741643
+0.760401 0.690414 0.722763 0.708250 0.708235 0.666058
+0.646467 0.642250 0.656295 0.614878 0.653367 0.629359
+0.646042 0.690924 0.592154 0.683447 0.687141 0.680143
+0.739207 0.628797 0.154918 0.746336 0.735754 0.725669
+0.729506 0.691773 0.736390 0.699099 0.705220 0.710907
+0.734798 0.716826 0.721064 0.698574 0.669227 0.638711
+0.659377 0.616510 0.644551 0.670201 0.664278 0.678100
+0.658011 0.723381 0.684853 0.708651 0.404874 0.308604
+

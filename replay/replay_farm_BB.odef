@@ -1,0 +1,226 @@
+#block BB.*
+block BB.tr.*
+block BB.s.*
+block BB.sum.*
+block BB.psum.*
+block BB.ts.*
+block BB.optics.*
+#block BB.cer.*
+block BB.cer.a*
+block BB.cer.n*
+block BB.cer.tr*
+#block BB.gold.*
+#block PriKineBB.*
+block g.*
+block BBurb.*
+#block BBrb.*
+#block DBB.*
+block adchel.BB*
+block adchel2.BB*
+block DBB.BBcerT*
+block DBB.evtype*
+block DBB.edt*
+block DBB.syncroc*
+block DBB.t*
+block DBB.fclk
+block DBB.f1*
+
+begin epics
+	IPM1H04A.XPOS
+	IPM1H04A.YPOS
+	IPM1H04B.XPOS
+	IPM1H04B.YPOS
+	haPolHe3_Spin_State
+	hac_bcm_average
+	HacAi_hpchan0
+	HacAi_hpchan1
+	HacAi_hpchan2
+	HacAi_hpchan3
+	HacAi_hpchan4
+	HacAi_hpchan5
+	HacAi_hpchan6
+	HacAi_hpchan7
+	HacAi_hpchan8
+	HacAi_hpchan9
+	HaGenTargPos.VAL
+	HacOMEGA_READ
+	DDM45_1disp1_read
+	DDM45_2disp1_read
+	DDM45_3disp1_read
+	MBSY1C.BDL
+	MMSHLAE
+	HALLC:p
+	FB_A:charge_asym
+	MBIGBOXs
+	MBIGBOXM
+	HacR_BB_LS450:FLD_DATA
+	HALLA:p
+	HALLA:dpp
+end epics
+
+#start scaler stuff..
+# "bbite" = event type 140
+# 1024 Hz clock 
+#begin scalers bbite
+#   clkcount 4 7 counts
+#   t1c 4 0 counts
+#   t2c 4 1 counts
+#   t3c 4 2 counts
+#   t4c 4 3 counts
+#   t5c 4 4 counts
+#   t6c 4 5 counts
+#   t7c 4 6 counts
+#   l1ac 4 8 counts
+#   u1cnt 4 16 counts
+#   u3cnt 4 17 counts
+#   u10cnt 4 18 counts
+#   d1cnt 4 19 counts
+#   d3cnt 4 20 counts
+#   d10cnt 4 21 counts
+ # These are rates
+#   t1r 4 0  
+#   t2r 4 1  
+#   t3r 4 2  
+#   t4r 4 3  
+#   t5r 4 4  
+#   t6r 4 5  
+#   t7r 4 6  
+#   l1ar 4 8
+#   u1r 4 16
+#   u3r 4 17 
+#   u10r 4 18 
+#   d1r 4 19 
+#   d3r 4 20 
+#   d10r 4 21 
+ # target and helicity combinations (slots 2,3,...)
+#   l1app 5 8
+#   l1apm 7 8
+#   l1amp 6 8
+#   l1amm 8 8
+   
+  # gated scalars
+#  fclkpp 5 11 counts
+#  fclkpm 7 11 counts
+#  fclkmp 6 11 counts
+#  fclkmm 8 11 counts
+#  u10pp 5 18 counts
+#  u10pm 7 18 counts
+#  u10mp 6 18 counts
+#  u10mm 8 18 counts
+#  d10pp 5 21 counts
+#  d10pm 7 21 counts
+#  d10mp 6 21 counts
+#  d10mm 8 21 counts
+#end scalers
+
+
+# "evbbite" = ROC12 data
+begin scalers evbbite
+  t1c 4 0 counts
+  t2c 4 1 counts
+  t3c 4 2 counts
+  t4c 4 3 counts
+  t5c 4 4 counts
+  t6c 4 5 counts
+  t7c 4 6 counts
+  l1ac 4 8 counts
+  fclk 4 11 counts
+#  f1rftime1 4 12 counts
+#  f1rftime2 4 13 counts
+  u1cnt 4 16 counts
+  u3cnt 4 17 counts
+  u10cnt 4 18 counts
+  d1cnt 4 19 counts
+  d3cnt 4 20 counts
+  d10cnt 4 21 counts
+  fclkc 4 11 counts
+  u1c 4 16 counts
+  u3c 4 17 counts
+  u10c 4 18 counts
+  d1c 4 19 counts
+  d3c 4 20 counts
+  d10c 4 21 counts
+# These are rates
+  t1r 4 0  
+  t2r 4 1  
+  t3r 4 2  
+  t4r 4 3  
+  t5r 4 4  
+  t6r 4 5  
+  t7r 4 6  
+  l1ar 4 8 
+#  f1rftime1 4 12 
+#  f1rftime2 4 13 
+  u1r 4 16 
+  u3r 4 17 
+  u10r 4 18  
+  d1r 4 19 
+  d3r 4 20  
+  d10r 4 21 
+# target and helicity combinations (slots 2,3,...)
+#  l1app 5 8 counts
+#  l1apm 7 8 counts
+#  l1amp 6 8 counts
+#  l1amm 8 8 counts
+  
+#  fclkpp 5 11 counts
+#  fclkpm 7 11 counts
+#  fclkmp 6 11 counts
+#  fclkmm 8 11 counts
+  
+  u1pp 5 16 counts
+  u1pm 7 16 counts
+  u1mp 6 16 counts
+  u1mm 8 16 counts
+
+  u3pp 5 17 counts
+  u3pm 7 17 counts
+  u3mp 6 17 counts
+  u3mm 8 17 counts
+
+  u10pp 5 18 counts
+  u10pm 7 18 counts
+  u10mp 6 18 counts
+  u10mm 8 18 counts
+  
+  d1pp 5 19 counts
+  d1pm 7 19 counts
+  d1mp 6 19 counts
+  d1mm 8 19 counts
+
+  d3pp 5 20 counts
+  d3pm 7 20 counts
+  d3mp 6 20 counts
+  d3mm 8 20 counts
+
+  d10pp 5 21 counts
+  d10pm 7 21 counts
+  d10mp 6 21 counts
+  d10mm 8 21 counts
+  
+  t1pp 5 0 counts
+  t1pm 7 0 counts
+  t1mp 6 0 counts
+  t1mm 8 0 counts
+  
+  t3pp 5 2 counts
+  t3pm 7 2 counts
+  t3mp 6 2 counts
+  t3mm 8 2 counts
+  
+  t5pp 5 4 counts
+  t5pm 7 4 counts
+  t5mp 6 4 counts
+  t5mm 8 4 counts
+  
+  t6pp 5 5 counts
+  t6pm 7 5 counts
+  t6mp 6 5 counts
+  t6mm 8 5 counts
+  
+end scalers
+
+
+
+
+
