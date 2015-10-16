@@ -50,19 +50,23 @@ class THaBigBiteE06010 : public THaBigBite {
 //------------------------------------------------------//
 // Hard coded constants
 	public:
+#ifndef __CINT__
 	static const UInt_t NSumBars/*	= 26*/;
+#endif
 	static const Double_t TimeWalkCoef[2][26][4];//TimeWalkCoef[side, y<0,y>0][bar][coef list]
 	static const Double_t WalkCoefUpLim;
 	static const Double_t WalkCoefLowLim;
 	static const Double_t MaxADC;	//max adc valuel, an adc beyound will be treated as abnormal event, no time walk correction would be applied
 	//void LoadTimeWalkCoef(void);
 	
+#ifndef __CINT__
 	static const UInt_t BITXCrate/*	= 8*/; 
 	static const UInt_t BITXSlot/*	= 17*/; 
 	static const UInt_t BIT5Chan/*	= 20*/; 
 	static const UInt_t BIT6Chan/*	= 21*/; 
 	static const UInt_t BITXLowLim/*	= 200*/;
 	static const UInt_t BITXHighLim/*	= 1500*/;
+#endif
 
 //------------------------------------------------------//
 
