@@ -1,6 +1,6 @@
 ## NOTE:  Update this file, then delete/comment the 'echo' lines
 echo "THIS IS ONLY AN EXAMPLE.  IT WILL NOT WORK FOR YOU."
-echo "Edit the file and change 'd2n_root' (at least) to the directory with your analyzer"
+echo "Edit the this file and change 'd2n_root' (at least) to the directory with your analyzer"
 echo 
 
 #===============================================================
@@ -39,7 +39,7 @@ setenv ANALYZER "${d2n_root}/d2n_analyzer"
 setenv ANALYZER_BIN "$ANALYZER"
 setenv ANALYZER_LIB "$ANALYZER"
 setenv PATH "${ANALYZER_BIN}:${PATH}"
-setenv LD_LIBRARY_PATH "$ANALYZER_LIB:$LD_LIBRARY_PATH"
+setenv LD_LIBRARY_PATH "${ANALYZER_LIB}:${LD_LIBRARY_PATH}"
 #we're using the updated DB here! make sure we have $d2n_root here:
 setenv DB_DIR "${d2n_root}/d2n/DB"
 setenv ANALYZER_DB "$DB_DIR"
